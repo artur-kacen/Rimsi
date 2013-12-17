@@ -1,0 +1,12 @@
+!!!
+html(ng-app="rimsi-be")
+    include includes/head
+    body
+        div.header(data-ng-include="'views/header.html'", data-role="navigation")
+        div(data-ng-include="'views/backend/menu.html'")
+
+        div.content
+            div.container
+                block content
+
+    include includes/foot

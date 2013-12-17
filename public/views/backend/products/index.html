@@ -1,0 +1,35 @@
+<div class="col-md-8">
+    <h1>Добавленные продукты</h1>
+
+    <div  ng-repeat="product in products" class="well">
+        <h2>{{product.content[0].name}}
+            <span class="glyphicon glyphicon-pencil" ng-click="edit(product._id)"></span>
+            <span class="glyphicon glyphicon-trash" ng-click="delete(product._id)"></span></h2>
+        <div ng-repeat="cont in product.content" >
+            <h3>{{ cont.name }}</h3>
+            <div >
+                <h3>Портфолио</h3>
+                <div>
+                    <img class="content-photo" ng-src="/images/gallery/{{product.mainPhoto.name}}" />
+                    <div ng-bind-html="cont.portfolio" class="ng-binding">
+                        <img class="content-photo" ng-src="/images/gallery/{{product.mainPhoto.name}}" />
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Галлерея</h2>
+            <div class="col-md-3" ng-repeat="photo in product.galleryPhotos">
+                <a class="thumbnail">
+                    <img ng-src="/images/gallery/{{photo.name}}" alt="{{photo.title}}" ng-click="set_current_photo(photo)">
+                </a>
+            </div>
+        </div>
+        <hr />
+    </div>
+
+</div>
+<div class="col-md-2"></div>
+<div class="col-md-2" data-spy="affix" data-offset-top="200">
+    <a class="btn btn-lg btn-primary btn-block" href="admin#!/products/add">Добавить</a>
+</div>

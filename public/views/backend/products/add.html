@@ -1,0 +1,44 @@
+<h1>Добавить продукт</h1>
+<div class="col-md-12">
+    <form role="form" name="productForm" class="detail-form well">
+        <div class="form-group " ng-class="{'has-error': productForm.name.$invalid}">
+            <label class="control-label">Название продукта (рус)</label>
+            <input class="form-control" name="name" ng-model="product.content[0].name" Обязательное поле>
+            <span ng-show="productForm.name.$error.Обязательное поле" class="help-block">
+                Обязательное поле</span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Портфолио (рус)</label>
+            <div text-angular="text-angular" ng-model="product.content[0].portfolio"></div>
+            <div ng-bind-html="product.content[0].portfolio"></div>
+        </div>
+    </form>
+</div>
+
+<div class="col-md-12">
+    <form role="form" name="productForm2" class="detail-form well">
+        <div class="form-group " ng-class="{'has-error': productForm2.name.$invalid}">
+            <label class="control-label">Produkta nosaukums (lat)</label>
+            <input class="form-control" name="name" ng-model="product.content[1].name" Обязательное поле>
+            <span ng-show="productForm2.name.$error.Обязательное поле" class="help-block">
+                Obligats lauks</span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Portfolio (lat)</label>
+            <div text-angular="text-angular" ng-model="product.content[1].portfolio"></div>
+        </div>
+    </form>
+</div>
+<div class="col-md-12">
+    <label>Главная фотография:</label>
+    <input type="file" ng-file-select="setMainPhoto($files)" accept="image/*" >
+    <label>Галлерея:</label>
+    <input type="file" ng-file-select="setGallery($files)" accept="image/*" multiple>
+</div>
+<a href="admin#!/products" class="btn">Cancel</a>
+<button ng-click="save()" ng-disabled="isClean() || (productForm.$invalid && productForm2.$invalid)"
+        class="btn btn-primary">Save</button>
+<button ng-click="destroy()"
+        ng-show="product.$id" class="btn btn-danger">Delete</button>
+
+

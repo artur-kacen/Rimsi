@@ -1,0 +1,21 @@
+ <h2>{{ru_page.name}}</h2>
+<div class="col-md-12">
+    <form role="form" name="productForm" class="detail-form well">
+        <div class="form-group">
+            <div ng-bind-html="ru_page.content" class="ng-binding"></div>
+        </div>
+    </form>
+</div>
+<h2>{{lv_page.name}}</h2>
+<div class="col-md-12">
+    <form role="form" name="productForm2" class="detail-form well">
+        <div class="form-group">
+            <div ng-bind-html="lv_page.content" class="ng-binding"></div>
+        </div>
+    </form>
+</div>
+<div class="col-md-12">
+    <label>Главная фотография:</label>
+    <img class="content-photo" ng-src="/images/gallery/{{ru_page.mainPhoto.name}}" ng-show="ru_page.mainPhoto" />
+</div>
+<a href="admin#!/{{ru_page.ref}}/{{ru_page._id}}" class="btn btn-primary">Edit</a>

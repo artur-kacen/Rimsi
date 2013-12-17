@@ -1,0 +1,8 @@
+<div>
+    <h2>{{page.name}}</h2>
+    <div >
+        <img class="content-photo" ng-src="/images/gallery/{{page.mainPhoto.name}}" ng-show="page.mainPhoto"/>
+        <div ng-bind-html="page.content" class="ng-binding">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+!!!
+html
+    head
+        meta(charset='utf-8')
+        title=title
+        link(rel='stylesheet', href='/css/bootstrap.css')
+        link(rel='stylesheet', href='/css/bootstrap-theme.css')
+        link(rel='stylesheet', href='/css/login.css')
+    body
+        .container
+            form.form-signin(action="/admin/user/session", method="post")
+                h2.form-signing-header Please Sign In
+                    input#email.form-control(type='text', name="email", placeholder='Email')
+                    input#password.form-control(type='password', name="password", placeholder='Password')
+                    button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
+            if message !== 'undefined'
+                .alert.alert-danger.error-box
+                    button.close(data-dismiss='alert', aria-hidden='true')&times;
+                    strong Error
+                    p= message
+    script(type='text/javascript', src='/js/lib/jquery.js')
+    script(type='text/javascript', src='/js/lib/bootstrap.js')
+
+
+

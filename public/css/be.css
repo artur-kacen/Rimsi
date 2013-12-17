@@ -1,0 +1,23 @@
+
+.detail-form input {
+    width: 250px;
+}
+.detail-form textarea {
+    width: 450px;
+    height: 250px;
+}
+
+.ta-editor {
+    min-height: 300px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+}
+
+.content-photo {
+
+    margin-right: 10px;
+    width: 250px;
+    height: 200px;
+}

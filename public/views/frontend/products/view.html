@@ -1,0 +1,10 @@
+<div>
+    <h2>{{product.content[i].name}}</h2>
+    <div>
+        <img class="content-photo" ng-src="/images/gallery/{{product.mainPhoto.name}}" />
+        <div ng-bind-html="product.content[i].portfolio" class="ng-binding">
+        </div>
+    </div>
+    <h2>Fotogalereja "{{product.content[i].name}}" </h2>
+    <div data-ng-include="'views/frontend/products/gallery.html'"></div>
+</div>

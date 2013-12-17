@@ -1,0 +1,27 @@
+<input type="text" ng-model="ru_page.name"/>
+<h2>{{ru_page.name}}</h2>
+<div class="col-md-12">
+    <form role="form" name="productForm" class="detail-form well">
+        <div class="form-group">
+            <label class="control-label">Портфолио (рус)</label>
+            <div text-angular="text-angular" ng-model="ru_page.content"></div>
+        </div>
+    </form>
+</div>
+<input type="text" ng-model="lv_page.name"/>
+<h2>{{lv_page.name}}</h2>
+<div class="col-md-12">
+    <form role="form" name="productForm2" class="detail-form well">
+        <div class="form-group">
+            <label class="control-label">Portfolio (lat)</label>
+            <div text-angular="text-angular" ng-model="lv_page.content"></div>
+        </div>
+    </form>
+</div>
+<div class="col-md-12">
+    <label>Главная фотография:</label>
+    <input type="file" ng-file-select="setMainPhoto($files)" accept="image/*" >
+</div>
+
+<a href="admin#!/{{ru_page.ref}}" class="btn">Cancel</a>
+<button ng-click="save()"  class="btn btn-primary">Save</button>

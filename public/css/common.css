@@ -1,0 +1,345 @@
+.icon {
+    width: 32px;
+}
+.lang-opacity {
+    opacity: 0.5;
+}
+.center-header {
+    padding: 0;
+    height: 130px;
+    background: url(../images/header_right.png) no-repeat;
+}
+
+.left-header {
+    padding: 0;
+    height: 130px;
+    background: url(../images/header_left.png) right top no-repeat;
+}
+
+.header {
+    margin-top: 25px;
+    background: url(../images/header.png) repeat-x;
+    height: 104px;
+}
+
+.worktime {
+    padding: 0;
+    color: #000000;
+    top: 35px;
+    font-family: "Century Gothic";
+    font-size: 16px;
+    line-height: 20px;
+    text-align: left;
+    text-shadow: 1px 0px 3px rgba(0, 0, 0, 0.53);
+}
+
+.clock {
+    margin-left: -30px;
+}
+
+.clock img {
+    width: 100px;
+    #background: url(../images/clock.png) left top no-repeat;
+}
+
+
+
+.top-menu {
+    position: relative;
+    z-index: 1;
+    float: right;
+    right: 22.5%;
+}
+
+.top-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.top-menu ul li {
+    display: inline;
+    float: left;
+    position: relative;
+    height: 33px;
+}
+
+.top-menu ul li a span {
+    width: 97px;
+    text-align: center;
+    display: inline;
+    float: left;
+    position: relative;
+    height: 32px;
+    line-height: 32px;
+    background: url(../images/top-menu-btn.png) left top;
+    color: #000000;
+    font-family: "Century Gothic";
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.top-menu ul li a:hover span,
+.top-menu ul li.active a span {
+    background: url(../images/top-menu-btn-hover.png) right top;
+}
+
+.top-menu >ul li:last-child a span {
+
+    width: 97px;
+    background: url(../images/top-menu-last-btn.png) right top !important;
+}
+
+.top-menu >ul li:hover.last a:hover span,
+.top-menu >ul li:last-child.active a span {
+    background: url(../images/top-menu-last-btn-hover.png) right top !important;
+}
+
+.top-menu >ul li:first-child a span {
+    width: 97px;
+    background: url(../images/top-menu-first.png) left top !important;
+}
+
+.top-menu >ul li:first-child a:hover span,
+.top-menu >ul li:first-child.active a span {
+    width: 97px;
+    background: url(../images/top-menu-first-hover.png) left top !important;
+}
+
+.top-menu >ul li:hover > ul {
+    display: block !important;
+}
+
+.top-menu ul li ul li, .top-menu ul li.active ul li {
+    display: block;
+    height: auto !important;
+}
+
+.top-menu ul li ul, .top-menu ul li.active ul {
+    width: 196px;
+    display: none;
+    position: absolute;
+    left: -17px;
+    top: 32px;
+    min-height: 250px;
+    padding-left: 13px;
+}
+
+.top-menu >ul li ul li a span,
+.top-menu >ul li ul li a:hover span,
+.top-menu >ul li.active ul li a span,
+.top-menu ul li.active ul li a:hover span {
+    font-size: 14px;
+    font-family: "Century Gothic";
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 1);
+    padding: 8px 14px 8px 14px;
+    width: 142px;
+    line-height: 16px;
+    height: auto !important;
+}
+
+.top-menu ul li ul li a span, .top-menu ul li ul li a:hover span,
+.top-menu ul li.active ul li a span, .top-menu ul li.active ul li a:hover span {
+    background: url(../images/child.png) left bottom no-repeat #ffdd7c;
+}
+
+.top-menu ul li ul li.first a span,
+.top-menu ul li ul li.first a:hover span,
+.top-menu ul li.active ul li.first a span,
+.top-menu ul li.active ul li.first a:hover span {
+    background: url(../images/child-last.png) left top no-repeat, url(../images/child.png) left bottom no-repeat #ffdd7c !important;
+    padding: 14px 14px 8px 14px;
+    width: 142px;
+    line-height: 16px;
+    height: auto !important;
+}
+
+.top-menu ul li ul li.last a span, .top-menu ul li ul li.last a:hover span,
+.top-menu ul li.active ul li.last a span, .top-menu ul li.active ul li.last a:hover span {
+    background: url(../images/child-last.png) left bottom no-repeat #ffdd7c !important;
+    padding: 8px 14px 12px 14px;
+    width: 142px;
+    line-height: 16px;
+    height: auto !important;
+}
+
+.top-menu ul li ul li a:hover span, .top-menu ul li ul li.last a:hover span, .top-menu ul li ul li.first a:hover span {
+    background-color: #f8cb54 !important;
+}
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+    height: 240px;
+}
+
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    z-index: 0;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+    height: 240px;
+    background-color: #777;
+}
+
+.carousel-inner > .item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 240px;
+}
+
+
+.wrap {
+    width: 100%;
+    background: url(../images/main-bg.png) top repeat-x;
+    height: 100%;
+}
+
+.wrap > .container {
+    background: #ffffff;
+}
+
+.content {
+    margin-top: 50px;
+}
+
+footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+    background: #ddd;
+    -webkit-box-shadow: 0 8px 6px 6px black;
+    -moz-box-shadow: 0 8px 6px 6px black;
+    box-shadow: 0 8px 6px 6px black
+}
+
+footer p {
+    padding: 5px 0 12px 10px
+}
+.left-content {
+    padding-left: 0px;
+}
+
+.left-menu-buttons {
+/*    background: url(../images/big_button.png) top no-repeat;
+    width: 195px;
+    height: 62px;*/
+}
+
+.left-menu-buttons img {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+.left-menu-button a {
+    cursor: pointer;
+    display: block;
+    background: url(../images/big_button.png) top no-repeat;
+    width: 195px;
+    height: 62px;
+    text-decoration: none;
+    color: #000000;
+    padding: 20px 0 0 60px;
+    text-align: center;
+}
+.left-menu-button a span {
+    font-size: 20px;
+    font-family: "Century Gothic";
+    text-transform: uppercase;
+}
+
+.left-menu-button > a:hover {
+    background: url(../images/big_button_hover.png) top no-repeat;
+    text-decoration: none;
+    color: #000000;
+}
+
+.module {
+    display: block;
+    width: 235px;
+    position: relative
+}
+
+.module .news-top, .module .advices-top {
+    text-align: center;
+    margin-top: 5px;
+    width: 235px;
+    height: 60px;
+    background: url(../images/m-top.png) top no-repeat;
+    display: block;
+    position: relative;
+    float: left
+}
+
+.module .news-top h4 {
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 55px;
+    color: #69615b;
+    font-size: 13px;
+    font-family: "Century Gothic";
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 1);
+}
+
+.module .center {
+    padding: 0 12px 0 12px;
+    margin: 0;
+    width: 235px;
+    background: url(../images/m-center.png) repeat-y;
+    display: block;
+    position: relative;
+    float: left
+}
+
+.module .bottom {
+    margin: 0;
+    width: 235px;
+    height: 20px;
+    background: url(../images/m-bottom.png) top no-repeat;
+    display: block;
+    position: relative;
+    float: left
+}
+
+.module .advices-top H4 {
+    margin: 0;
+    text-transform: uppercase;
+    width: 130px;
+    line-height: 16px;
+    color: #69615b;
+    font-size: 13px;
+    font-family: "Century Gothic";
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 1);
+    padding: 10px 0px 0 50px;
+}
+
+.module .center .view-all {
+    float: left;
+    text-align: center;
+    position: relative;
+    left: 50px;
+    display: block;
+    width: 112px;
+    height: 29px;
+    background: url(../images/viewall.png) top no-repeat;
+}
+
+.module .center .view-all a span {
+    text-align: center;
+    color: #689208;
+    font-size: 12px;
+    line-height: 26px;
+    padding-right: 4px;
+    text-decoration: underline
+}
+.right-content {
+    padding-right: 0px;
+}

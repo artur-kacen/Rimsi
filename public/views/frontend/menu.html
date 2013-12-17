@@ -1,0 +1,24 @@
+<div class="top-menu">
+    <ul class="menu">
+        <li id="current" class="first active item1"><a href="#!/"><span>Главная</span></a></li>
+        <li class="parent"><a href="#!/materials"><span>Продукты</span></a>
+            <ul>
+                <li ng-repeat="product in products"><a href="#!/product/{{product._id}}"><span>{{product.content[i].name}}</span></a></li>
+            </ul>
+        </li>
+        <li class="parent"><a href="#!/materials"><span>Материалы</span></a>
+            <ul>
+            <li class="first"><a href="/materials/system-a"><span>Системы Шкафов купе</span></a></li>
+            <li class=""><a href="/materials/obrabotka"><span>Обработка поверхностей</span></a></li>
+            <li class=""><a href="/materials/dekor"><span>Декоративные материалы</span></a></li>
+            <li class="item36"><a href="/materials/dsp"><span>ДСП</span></a></li>
+            <li class="item38"><a href="/materials/steklo"><span>Стекло и зеркало</span></a></li>
+            <li class="item80"><a href="/materials/fotopechat"><span>Фотопечать</span></a></li>
+            <li class="last item85"><a href="/materials/potternaya-rezka"><span>Плоттерная резка</span></a></li>
+            </ul>
+        </li>
+        <li class="item68"><a href="#!/review"><span>{{getPageTitle("review")}}</span></a></li>
+        <li class="item49"><a href="#!/about_us"><span>{{getPageTitle("about_us")}}</span></a></li>
+        <li class="last item16"><a href="/signup"><span>Login</span></a></li>
+    </ul>
+</div>
