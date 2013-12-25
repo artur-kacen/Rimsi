@@ -67,3 +67,14 @@ services.factory('PageFactory', function($resource){
         delete: { method: 'DELETE', url: '/admin/page/:pageId', params:  {pageId: '@_id'}}
     })
 });
+
+services.factory('MultiPageFactory', function($resource){
+    var URL = '/admin/multipage';
+    return $resource(URL, {}, {
+        query: { method: 'GET', url: URL+'/type/:type', params: {type: '@type'}, isArray: true},
+        create: { method: 'POST' },
+        get: { method: 'GET', url: URL+'/:id', params:  {id: '@_id'}},
+        update: { method: 'PUT', url: URL+'/:id', params:  {id: '@_id'}},
+        delete: { method: 'DELETE', url: URL+'/:id', params:  {id: '@_id'}}
+    })
+});

@@ -25,9 +25,7 @@ app.controller('HomeCtrl', ['$scope', 'ProductsFactory', function($scope, Produc
     $scope.products = ProductsFactory.query();
 }]);
 
-app.controller('ProductCtrl', ['$scope', '$routeParams', '$translate', '$timeout', 'ProductFactory',
-function($scope, $routeParams, $translate, $timeout, ProductFactory) {
-    $scope.product = ProductFactory.get({productId: $routeParams.id});
+function MultiPageHandler($scope, MultiPageFactory, $routeParams, $location, $translate, single) {
     $scope.i = 0;
     $scope.$watch(
         function() {return $translate.uses();},
@@ -38,9 +36,59 @@ function($scope, $routeParams, $translate, $timeout, ProductFactory) {
                 $scope.i=1;
             }
         })
+    if (single) {
+        return MultiPageFactory.get({ref: $routeParams.id, type: $location.path().split("/")[1], lang: $translate.uses()});
+    } else {
+        return MultiPageFactory.query({ref: $routeParams.id, type: $location.path().split("/")[1], lang: $translate.uses()});
+    }
+}
+app.controller('ProductCtrl', ['$scope', '$routeParams', '$translate', '$timeout', 'MultiPageFactory', '$location',
+function($scope, $routeParams, $translate, $timeout, MultiPageFactory, $location) {
+    $scope.product = MultiPageHandler($scope, MultiPageFactory, $routeParams, $location, $translate, true);
+
 }]);
+app.controller('AllProductCtrl', ['$scope', '$routeParams', '$translate', '$timeout', 'MultiPageFactory', '$location',
+    function($scope, $routeParams, $translate, $timeout, MultiPageFactory, $location) {
+        $scope.products = MultiPageHandler($scope, MultiPageFactory, $routeParams, $location, $translate, false);
+    }]);
+
+app.controller('MaterialCtrl', ['$scope', '$routeParams', '$translate', '$timeout', 'MultiPageFactory', '$location',
+    function($scope, $routeParams, $translate, $timeout, MultiPageFactory, $location) {
+        $scope.material = MultiPageHandler($scope, MultiPageFactory, $routeParams, $location, $translate, true);
+    }]);
+app.controller('AllMaterialCtrl', ['$scope', '$routeParams', '$translate', '$timeout', 'MultiPageFactory', '$location',
+    function($scope, $routeParams, $translate, $timeout, MultiPageFactory, $location) {
+        $scope.materials = MultiPageHandler($scope, MultiPageFactory, $routeParams, $location, $translate, false);
+    }]);
+app.controller('NewsCtrl', ['$scope', '$routeParams', '$translate', '$timeout', 'MultiPageFactory', '$location',
+    function($scope, $routeParams, $translate, $timeout, MultiPageFactory, $location) {
+        $scope.article = MultiPageHandler($scope, MultiPageFactory, $routeParams, $location, $translate, true);
+    }]);
+app.controller('AllNewsCtrl', ['$scope', '$routeParams', '$translate', '$timeout', 'MultiPageFactory', '$location',
+    function($scope, $routeParams, $translate, $timeout, MultiPageFactory, $location) {
+        $scope.articles = MultiPageHandler($scope, MultiPageFactory, $routeParams, $location, $translate, false);
+    }]);
+app.controller('AdvicesCtrl', ['$scope', '$routeParams', '$translate', '$timeout', 'MultiPageFactory', '$location',
+    function($scope, $routeParams, $translate, $timeout, MultiPageFactory, $location) {
+        $scope.advice = MultiPageHandler($scope, MultiPageFactory, $routeParams, $location, $translate, true);
+    }]);
+app.controller('AllAdvicesCtrl', ['$scope', '$routeParams', '$translate', '$timeout', 'MultiPageFactory', '$location',
+    function($scope, $routeParams, $translate, $timeout, MultiPageFactory, $location) {
+        $scope.advices = MultiPageHandler($scope, MultiPageFactory, $routeParams, $location, $translate, false);
+    }]);
+
 
 app.controller('PageCtrl', ['$scope', 'PageFactory', '$translate', '$location', function($scope, PageFactory, $translate, $location){
+    $scope.page = PageFactory.query({ref: $location.path().replace("/", ""), language: $translate.uses()});
+    $scope.$watch(
+        function () {return $translate.uses();},
+        function (newValue) {
+            $scope.page = PageFactory.query({ref: $location.path().replace("/", ""), language: newValue});
+        }
+    )
+}]);
+
+app.controller('MultiPageCtrl', ['$scope', 'PageFactory', '$translate', '$location', function($scope, PageFactory, $translate, $location){
     $scope.page = PageFactory.query({ref: $location.path().replace("/", ""), language: $translate.uses()});
     $scope.$watch(
         function () {return $translate.uses();},

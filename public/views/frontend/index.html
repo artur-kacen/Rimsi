@@ -1,5 +1,23 @@
-<section>
-	<h1>This is the home view</h1>
+<div class="row">
+    <div class="content-top col-md-12">
+        <div class="row">
+            <div class="content-module col-md-6">
+                <div class="content-module-body"><img src="images/content-top-1.png"></div>
+                <div class="content-module-footer"><a href><span class="text">{{ 'CLOSET' | translate }}</span></a> </div>
+            </div>
+            <div class="content-module col-md-6">
+                <div class="content-module-body"><img src="images/content-top-2.png"></div>
+                <div class="content-module-footer"><a href><span class="text">{{ 'KITCHEN' | translate }}</span></a> </div>
+            </div>
+        </div>
+    </div>
 
-
-</section>
+    <div class="col-md-12">
+        <h2>{{page.name}}</h2>
+        <div >
+            <img class="content-photo" ng-src="/images/gallery/{{page.mainPhoto.name}}" ng-show="page.mainPhoto"/>
+            <div ng-bind-html="page.content" class="ng-binding">
+            </div>
+        </div>
+    </div>
+</div>

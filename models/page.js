@@ -12,8 +12,10 @@ var PageSchema = new Schema({
     ref: String,
     name: String,
     language: String,
+    description: String,
     content: String,
-    mainPhoto: FileInfoSchema
+    mainPhoto: FileInfoSchema,
+    createdDate: { type: Date, default: Date.now }
 });
 PageSchema.index({ref: 1, language: 1}, {unique: true});
 PageSchema.statics = {

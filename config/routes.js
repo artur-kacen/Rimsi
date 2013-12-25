@@ -8,6 +8,7 @@ module.exports = function(app, passport, auth) {
     var admin = require('./../routes/admin');
     var article = require('./../routes/article');
     var product = require('./../routes/product');
+    var multi_page = require('./../routes/multi_content_page');
     var page = require('./../routes/page');
 
     app.get('/admin', auth.requiresLogin, admin.index);
@@ -29,6 +30,14 @@ module.exports = function(app, passport, auth) {
 
     //Finish with setting up the userId param
     app.param('userId', user.user);
+
+    // MultiPage routes
+    app.get('/admin/multipage/type/:type', auth.requiresLogin, multi_page.find_all_types);
+    app.post('/admin/multipage', auth.requiresLogin, multi_page.create);
+    app.get('/admin/multipage/:id', auth.requiresLogin, multi_page.show);
+    app.put('/admin/multipage/:id', auth.requiresLogin, multi_page.update);
+    app.del('/admin/multipage/:id', auth.requiresLogin, multi_page.destroy);
+    app.param('multiPageId', multi_page.page);
 
     //Product routes
     app.get('/admin/products', auth.requiresLogin, product.all);
@@ -65,6 +74,12 @@ module.exports = function(app, passport, auth) {
 
     app.get('/pages', page.get_titles);
     app.get('/page', page.find);
+
+    app.get('/multipage/titles', multi_page.get_titles);
+    app.get('/multipage/description/:type', multi_page.get_description);
+    app.get('/multipage/:type', multi_page.find_all_types);
+    app.get('/multipage/:type/:ref', multi_page.find_type_content);
+
 
     //Home route
     var index = require('./../routes/index');

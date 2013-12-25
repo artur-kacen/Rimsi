@@ -1,0 +1,34 @@
+<div class="col-md-8">
+    <h1>Добавленные </h1>
+    <div  ng-repeat="page in pages" class="well">
+        <h2>{{page.content[0].name}}
+            <span class="glyphicon glyphicon-pencil" ng-click="edit(page._id)"></span>
+            <span class="glyphicon glyphicon-trash" ng-click="delete(page._id)"></span></h2>
+        <div ng-repeat="cont in page.content">
+            <h3> Наименование: "{{ cont.name }}" ({{cont.language}})</h3>
+            <h3>Краткое описание: ({{cont.language}})</h3>
+            <p>{{cont.description}}</p>
+            <div>
+                <h3>Портфолио ({{cont.language}})</h3>
+                <div>
+                    <img class="content-photo" ng-src="/images/gallery/{{cont.mainPhoto.name}}" ng-show="cont.mainPhoto"/>
+                    <div ng-bind-html="cont.content" class="content-info"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Галлерея</h2>
+            <div class="col-md-3" ng-repeat="photo in page.galleryPhotos">
+                <a class="thumbnail">
+                    <img ng-src="/images/gallery/{{photo.name}}" alt="{{photo.title}}" ng-click="set_current_photo(photo)">
+                </a>
+            </div>
+        </div>
+        <hr />
+    </div>
+
+</div>
+<div class="col-md-2"></div>
+<div class="col-md-2" data-spy="affix" data-offset-top="200">
+    <a class="btn btn-lg btn-primary btn-block" href="admin#!/{{type}}/add">Добавить</a>
+</div>

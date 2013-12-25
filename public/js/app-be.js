@@ -11,7 +11,7 @@ back.config(function($routeProvider, $locationProvider, $httpProvider) {
             templateUrl: 'views/backend/index.html',
             controller: 'AdminMainCtrl'
         }).
-        when('/products', {
+        /*when('/products', {
             templateUrl: 'views/backend/products/index.html',
             controller: 'AdminProductMainCtrl'
         }).
@@ -22,22 +22,82 @@ back.config(function($routeProvider, $locationProvider, $httpProvider) {
         when('/products/edit/:id', {
             templateUrl: 'views/backend/products/add.html',
             controller: 'AdminProductCtrl'
+        }).*/
+        when('/products', {
+            templateUrl: 'views/backend/multi_page/index.html',
+            controller: 'ProductPageCtrl'
+        }).
+        when('/products/add', {
+            templateUrl: 'views/backend/multi_page/add.html',
+            controller: 'ProductPageModifyCtrl'
+        }).
+        when('/products/edit/:id', {
+            templateUrl: 'views/backend/multi_page/add.html',
+            controller: 'ProductPageModifyCtrl'
         }).
 
         when('/materials', {
-            templateUrl: 'views/backend/materials/index.html',
-            controller: 'AdminMaterialMainCtrl'
+            templateUrl: 'views/backend/multi_page/index.html',
+            controller: 'MaterialPageCtrl'
         }).
         when('/materials/add', {
-            templateUrl: 'views/backend/materials/add.html',
-            controller: 'AdminMaterialCtrl'
+            templateUrl: 'views/backend/multi_page/add.html',
+            controller: 'MaterialPageModifyCtrl'
         }).
         when('/materials/edit/:id', {
-            templateUrl: 'views/backend/products/add.html',
-            controller: 'AdminMaterialCtrl'
+            templateUrl: 'views/backend/multi_page/add.html',
+            controller: 'MaterialPageModifyCtrl'
+        }).
+        when('/news', {
+            templateUrl: 'views/backend/multi_page/index.html',
+            controller: 'NewsPageCtrl'
+        }).
+        when('/news/add', {
+            templateUrl: 'views/backend/multi_page/add.html',
+            controller: 'NewsPageModifyCtrl'
+        }).
+        when('/news/edit/:id', {
+            templateUrl: 'views/backend/multi_page/add.html',
+            controller: 'NewsPageModifyCtrl'
+        }).
+        when('/advices', {
+            templateUrl: 'views/backend/multi_page/index.html',
+            controller: 'AdvicePageCtrl'
+        }).
+        when('/advices/add', {
+            templateUrl: 'views/backend/multi_page/add.html',
+            controller: 'AdvicePageModifyCtrl'
+        }).
+        when('/advices/edit/:id', {
+            templateUrl: 'views/backend/multi_page/add.html',
+            controller: 'AdvicePageModifyCtrl'
         }).
 
 
+        when('/contacts', {
+            templateUrl: 'views/backend/pages/index.html',
+            controller: 'ContactCtrl'
+        }).
+        when('/contacts/:id', {
+            templateUrl: 'views/backend/pages/add.html',
+            controller: 'ContactCtrl'
+        }).
+        when('/contactss/add', {
+            templateUrl: 'views/backend/pages/add.html',
+            controller: 'ContactAddCtrl'
+        }).
+        when('/index', {
+            templateUrl: 'views/backend/pages/index.html',
+            controller: 'IndexCtrl'
+        }).
+        when('/index/:id', {
+            templateUrl: 'views/backend/pages/add.html',
+            controller: 'IndexCtrl'
+        }).
+        when('/indexs/add', {
+            templateUrl: 'views/backend/pages/add.html',
+            controller: 'IndexAddCtrl'
+        }).
         when('/review', {
             templateUrl: 'views/backend/pages/index.html',
             controller: 'ReviewCtrl'

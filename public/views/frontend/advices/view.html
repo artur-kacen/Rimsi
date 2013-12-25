@@ -1,0 +1,7 @@
+<div>
+    <h2>{{advice.content[i].name}}</h2>
+    <div>
+        <img class="content-photo" ng-src="/images/gallery/{{advice.content[i].mainPhoto.name}}" ng-show="advice.content[i].mainPhoto"/>
+        <div class="content-info" ng-bind-html="advice.content[i].content" class="ng-binding"></div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<h2>{{ 'NEWS' | translate }}:</h2>
+<div class="media" ng-repeat="article in articles">
+    <a class="pull-left" href="#!/{{article.type}}/{{article.ref}}">
+        <img class="media-object" ng-src="/images/gallery/{{article.content[i].mainPhoto.name}}" style="width: 64px; height: 64px">
+    </a>
+    <div class="media-body">
+        <h4 class="media-heading">{{article.content[i].name}}</h4>
+        {{article.content[i].description}}
+    </div>
+</div>

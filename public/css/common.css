@@ -1,9 +1,48 @@
+.text {
+    font-family: "!Neo'w";
+    color: rgb(120, 95, 73);
+    text-shadow: 1px 2px 3px rgb(0, 0, 0);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    font-family: "!Neo'w";
+    color: rgb(120, 95, 73);
+}
+
+.content-photo {
+    width: 200px;
+    float: left;
+    height: 110px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.content-info {
+    min-height: 115px;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
 .icon {
     width: 32px;
+    padding-right: 5px;
 }
+
 .lang-opacity {
     opacity: 0.5;
 }
+
 .center-header {
     padding: 0;
     height: 130px;
@@ -41,8 +80,6 @@
     width: 100px;
     #background: url(../images/clock.png) left top no-repeat;
 }
-
-
 
 .top-menu {
     position: relative;
@@ -84,29 +121,29 @@
     background: url(../images/top-menu-btn-hover.png) right top;
 }
 
-.top-menu >ul li:last-child a span {
+.top-menu > ul > li:last-child a span {
 
     width: 97px;
     background: url(../images/top-menu-last-btn.png) right top !important;
 }
 
-.top-menu >ul li:hover.last a:hover span,
-.top-menu >ul li:last-child.active a span {
+.top-menu > ul > li:hover.last a:hover span,
+.top-menu > ul > li:last-child.active a span {
     background: url(../images/top-menu-last-btn-hover.png) right top !important;
 }
 
-.top-menu >ul li:first-child a span {
+.top-menu > ul > li:first-child a span {
     width: 97px;
     background: url(../images/top-menu-first.png) left top !important;
 }
 
-.top-menu >ul li:first-child a:hover span,
-.top-menu >ul li:first-child.active a span {
+.top-menu > ul > li:first-child a:hover span,
+.top-menu > ul > li:first-child.active a span {
     width: 97px;
     background: url(../images/top-menu-first-hover.png) left top !important;
 }
 
-.top-menu >ul li:hover > ul {
+.top-menu > ul li:hover > ul {
     display: block !important;
 }
 
@@ -115,8 +152,9 @@
     height: auto !important;
 }
 
-.top-menu ul li ul, .top-menu ul li.active ul {
-    width: 196px;
+.top-menu > ul > li > ul,
+.top-menu > ul > li.active > ul {
+    width: 115px;
     display: none;
     position: absolute;
     left: -17px;
@@ -125,54 +163,163 @@
     padding-left: 13px;
 }
 
-.top-menu >ul li ul li a span,
-.top-menu >ul li ul li a:hover span,
-.top-menu >ul li.active ul li a span,
-.top-menu ul li.active ul li a:hover span {
+.top-menu > ul > li ul li a span,
+.top-menu > ul > li ul li a:hover span,
+.top-menu > ul > li.active ul li a span,
+.top-menu > ul > li.active ul li a:hover span {
     font-size: 14px;
     font-family: "Century Gothic";
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 1);
     padding: 8px 14px 8px 14px;
-    width: 142px;
+    width: 115px;
     line-height: 16px;
     height: auto !important;
 }
 
-.top-menu ul li ul li a span, .top-menu ul li ul li a:hover span,
-.top-menu ul li.active ul li a span, .top-menu ul li.active ul li a:hover span {
-    background: url(../images/child.png) left bottom no-repeat #ffdd7c;
+.bottom-menu {
+    margin: 0 auto;
+    position: relative;
+    top: -46px;
+    width: 1000px;
+    display: block
 }
 
-.top-menu ul li ul li.first a span,
-.top-menu ul li ul li.first a:hover span,
-.top-menu ul li.active ul li.first a span,
-.top-menu ul li.active ul li.first a:hover span {
-    background: url(../images/child-last.png) left top no-repeat, url(../images/child.png) left bottom no-repeat #ffdd7c !important;
+.bottom-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+.bottom-menu ul li {
+    display: inline;
+    float: left;
+    position: relative;
+}
+
+.bottom-menu ul li a span {
+    display: inline;
+    float: left;
+    position: relative;
+    padding: 0 52px 0 52px;
+    line-height: 44px;
+    color: #000000;
+    font-family: "Arial";
+    font-size: 13px;
+}
+
+.bottom-menu ul li a:hover span,
+.bottom-menu ul li.active a span {
+    display: inline;
+    float: left;
+    position: relative;
+    padding: 0 52px 0 52px;
+    background-color: #F5CD22 !important;
+    line-height: 44px;
+    color: #000000;
+    font-family: "Arial";
+    font-size: 13px;
+}
+
+.bottom-menu ul li:hover > ul {
+    display: block !important
+}
+
+.bottom-menu ul li ul li,
+.bottom-menu ul li.active ul li {
+    display: block;
+    height: auto !important
+}
+
+.bottom-menu ul li ul,
+.bottom-menu ul li.active ul {
+    width: 196px;
+    display: none;
+    position: absolute;
+    left: -13px;
+    bottom: 44px;
+    padding-left: 13px
+}
+
+.bottom-menu ul li ul li a span,
+.bottom-menu ul li ul li a:hover span,
+.bottom-menu ul li.active ul li a span,
+.bottom-menu ul li.active ul li a:hover span {
+    font-size: 14px;
+    color: #000000;
+    font-family: "Century Gothic";
+    padding: 8px 14px 8px 14px;
+    width: 142px;
+    line-height: 16px;
+    height: auto !important
+}
+
+ul.menu li ul li a span,
+ul.menu li ul li a:hover span,
+ul.menu li.active ul li a span,
+ul.menu li.active ul li a:hover span {
+    background: url(../images/child.png) left bottom no-repeat #A79E93;
+}
+
+ul.menu li ul li:first-child a span,
+ul.menu li ul li:first-child a:hover span,
+ul.menu li.active ul li:first-child a span,
+ul.menu li.active ul li:first-child a:hover span {
+    background: url(../images/child-last.png) left top no-repeat, url(../images/child.png) left bottom no-repeat #A79E93 !important;
     padding: 14px 14px 8px 14px;
-    width: 142px;
+    width: 115px;
     line-height: 16px;
     height: auto !important;
 }
 
-.top-menu ul li ul li.last a span, .top-menu ul li ul li.last a:hover span,
-.top-menu ul li.active ul li.last a span, .top-menu ul li.active ul li.last a:hover span {
-    background: url(../images/child-last.png) left bottom no-repeat #ffdd7c !important;
+ul.menu li ul li:last-child a span,
+ul.menu li ul li:last-child a:hover span,
+ul.menu li.active ul li:last-child a span,
+ul.menu li.active ul li:last-child a:hover span {
+    background: url(../images/child-last.png) left bottom no-repeat #A79E93 !important;
     padding: 8px 14px 12px 14px;
-    width: 142px;
+    width: 115px;
     line-height: 16px;
     height: auto !important;
 }
 
-.top-menu ul li ul li a:hover span, .top-menu ul li ul li.last a:hover span, .top-menu ul li ul li.first a:hover span {
-    background-color: #f8cb54 !important;
+.bottom-menu ul.menu li ul li a span,
+.bottom-menu ul.menu li ul li:first-child a span,
+.bottom-menu ul.menu li ul li:last-child a span {
+    width: 162px;
+}
+
+.bottom-menu ul.menu li ul li a span {
+    background-color: #8c7f75;
+}
+
+.bottom-menu ul.menu li ul li:first-child a span {
+    background: url(../images/child-last.png) left top no-repeat, url(../images/child.png) left bottom no-repeat #8c7f75 !important;
+}
+
+.bottom-menu ul.menu li ul li:last-child a span {
+    background: url(../images/child-last.png) left bottom no-repeat #8c7f75 !important;
+}
+
+ul.menu li ul li a:hover span,
+ul.menu li ul li:last-child a:hover span,
+ul.menu li ul li:first-child a:hover span {
+    background-color: #F5CD22 !important;
 }
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
+.carousel-content {
+    padding: 40px 0 40px 0;
+}
+
 /* Carousel base class */
 .carousel {
-    height: 240px;
+    background-color: #96857D;
+    padding: 5px 0 5px 0;
+    -webkit-box-shadow: 0px 22px 22px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 22px 22px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 22px 22px 0px rgba(0, 0, 0, 0.1);
 }
 
 /* Since positioning the image, we need to help out the caption */
@@ -182,8 +329,7 @@
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
-    height: 240px;
-    background-color: #777;
+    height: 284px;
 }
 
 .carousel-inner > .item > img {
@@ -191,22 +337,47 @@
     top: 0;
     left: 0;
     min-width: 100%;
-    height: 240px;
+    height: 284px;
 }
 
+.carousel-indicators {
+    bottom: 0;
+    z-index: 2;
+}
+
+.carousel-control > img {
+    position: absolute;
+    top: 40%;
+    z-index: 5;
+    display: inline-block;
+}
+
+.carousel-left-button > img {
+    left: -22px;
+
+}
+
+.carousel-right-button > img {
+    right: -22px;
+}
 
 .wrap {
     width: 100%;
     background: url(../images/main-bg.png) top repeat-x;
+    min-height: 1000px;
     height: 100%;
 }
 
 .wrap > .container {
     background: #ffffff;
+    min-height: 1000px;
+    -webkit-box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.54);
+    -moz-box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.54);
+    box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.54);
 }
 
-.content {
-    margin-top: 50px;
+.content > .container {
+    padding: 0 4px 0 4px;
 }
 
 footer {
@@ -224,55 +395,104 @@ footer {
 footer p {
     padding: 5px 0 12px 10px
 }
+
 .left-content {
     padding-left: 0px;
 }
 
 .left-menu-buttons {
-/*    background: url(../images/big_button.png) top no-repeat;
-    width: 195px;
-    height: 62px;*/
+    padding-bottom: 15px;
 }
 
-.left-menu-buttons img {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-}
 .left-menu-button a {
     cursor: pointer;
     display: block;
-    background: url(../images/big_button.png) top no-repeat;
+
     width: 195px;
     height: 62px;
     text-decoration: none;
     color: #000000;
-    padding: 20px 0 0 60px;
+    padding: 0px 0 10px 66px;
     text-align: center;
 }
+
+.constructor a {
+    background: url(../images/tools_button.png) top no-repeat;
+}
+
+.constructor > a:hover {
+    background: url(../images/tools_button_hover.png) top no-repeat;
+}
+
+.special-offer a {
+    background: url(../images/box_button.png) top no-repeat;
+}
+
+.special-offer > a:hover {
+    background: url(../images/box_button_hover.png) top no-repeat;
+}
+
+.photo-gallery a {
+    background: url(../images/camera_button.png) top no-repeat;
+}
+
+.photo-gallery > a:hover {
+    background: url(../images/camera_button_hover.png) top no-repeat;
+}
+
+.measurer a {
+    background: url(../images/metr_button.png) top no-repeat;
+}
+
+.measurer > a:hover {
+    background: url(../images/metr_button_hover.png) top no-repeat;
+}
+
+.delivery a {
+    background: url(../images/avto_button.png) top no-repeat;
+}
+
+.delivery > a:hover {
+    background: url(../images/avto_button_hover.png) top no-repeat;
+}
+
+.assembly a {
+    background: url(../images/drel_button.png) top no-repeat;
+}
+
+.assembly > a:hover {
+    background: url(../images/drel_button_hover.png) top no-repeat;
+}
+
 .left-menu-button a span {
-    font-size: 20px;
+    line-height: 30px;
+    font-size: 15px;
+    font-weight: bold;
     font-family: "Century Gothic";
     text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 1);
+}
+
+.left-menu-button a span.small {
+    line-height: 60px;
 }
 
 .left-menu-button > a:hover {
-    background: url(../images/big_button_hover.png) top no-repeat;
     text-decoration: none;
     color: #000000;
 }
 
 .module {
     display: block;
-    width: 235px;
+    width: 203px;
     position: relative
 }
 
 .module .news-top, .module .advices-top {
     text-align: center;
     margin-top: 5px;
-    width: 235px;
-    height: 60px;
+    width: 203px;
+    height: 48px;
     background: url(../images/m-top.png) top no-repeat;
     display: block;
     position: relative;
@@ -282,17 +502,17 @@ footer p {
 .module .news-top h4 {
     margin: 0;
     text-transform: uppercase;
-    line-height: 55px;
-    color: #69615b;
+    line-height: 50px;
+    color: rgb(120, 95, 73);
     font-size: 13px;
     font-family: "Century Gothic";
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 1);
+    font-weight: 600;
 }
 
 .module .center {
     padding: 0 12px 0 12px;
     margin: 0;
-    width: 235px;
+    width: 203px;
     background: url(../images/m-center.png) repeat-y;
     display: block;
     position: relative;
@@ -301,8 +521,8 @@ footer p {
 
 .module .bottom {
     margin: 0;
-    width: 235px;
-    height: 20px;
+    width: 203px;
+    height: 29px;
     background: url(../images/m-bottom.png) top no-repeat;
     display: block;
     position: relative;
@@ -312,12 +532,12 @@ footer p {
 .module .advices-top H4 {
     margin: 0;
     text-transform: uppercase;
-    width: 130px;
-    line-height: 16px;
-    color: #69615b;
-    font-size: 13px;
+    width: 150px;
+    line-height: 14px;
+    color: rgb(120, 95, 73);
+    font-size: 11px;
     font-family: "Century Gothic";
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 1);
+    font-weight: bold;
     padding: 10px 0px 0 50px;
 }
 
@@ -325,7 +545,7 @@ footer p {
     float: left;
     text-align: center;
     position: relative;
-    left: 50px;
+    left: 35px;
     display: block;
     width: 112px;
     height: 29px;
@@ -340,6 +560,163 @@ footer p {
     padding-right: 4px;
     text-decoration: underline
 }
-.right-content {
-    padding-right: 0px;
+
+.module-item {
+    position: relative;
+    display: block;
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+    padding: 0 5px 0 5px;
 }
+
+.module-item-title {
+    position: relative;
+    display: block;
+    float: left;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+    line-height: 14px
+}
+
+.module-item-title a {
+    margin: 0;
+    font-size: 12px;
+    color: #72501a;
+    line-height: 14px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.module-item-date {
+    position: relative;
+    display: block;
+    float: left;
+    margin: 0 0 0 0;
+    padding: 0;
+    font-size: 12px;
+    color: #9b947f;
+    width: 100%;
+}
+
+.module-item-content-img {
+    position: relative;
+    display: inline-block;
+    float: left;
+    width: 90px;
+    height: 70px;
+}
+.module-item-content-img  img{
+    width: 90px;
+    height: 70px;
+}
+.module-item-content-text {
+    margin: 0 0 0 3px;
+    position: relative;
+    display: inline-block;
+    float: left;
+    width: 76px;
+    vertical-align: top
+}
+.module-item-content-text p {
+    line-height: 14px;
+    font-size: 12px;
+    margin: 0;
+}
+
+.module-item-content-readmore {
+    position: relative;
+    display: block;
+    float: right;
+    top: -3px;
+    right: 2px;
+}
+.readmore {
+    text-decoration: underline;
+    color: #60920e;
+    font-size: 12px;
+    color: #60920e !important;
+}
+
+.right-content {
+    padding: 0;
+}
+
+.content-top {
+    padding: 0 10px 0 10px;
+}
+
+.content-top .content-module {
+    /*width: 50%;*/
+}
+
+.content-top .content-module .content-module-body {
+    /*    border: #ffffff solid 2px;
+        -webkit-box-shadow: 10px 10px 133px 16px rgba(0,0,0,0.48);
+        -moz-box-shadow: 10px 10px 133px 16px rgba(0,0,0,0.48);
+        box-shadow: 10px 10px 133px 16px rgba(0,0,0,0.48);*/
+}
+
+.content-top .content-module .content-module-body img {
+    width: 100%;
+}
+
+.content-top .content-module .content-module-footer {
+    background: url(../images/content_module_footer.png) center no-repeat;
+    height: 45px;
+    text-align: center;
+    margin-top: -4px;
+}
+
+.content-top .content-module .content-module-footer a span {
+    text-transform: uppercase;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+/* Footer
+
+*/
+.footer {
+    height: 46px;;
+    background: #f0f0f0;
+}
+
+.footer-bg1 {
+    background-color: #8c7f75;
+    height: 44px;
+    position: relative
+}
+
+.footer-bg2 {
+    background-color: #625851;
+    height: 2px;
+    position: relative
+}
+
+/*
+.bottom-menu ul li ul li a span, .bottom-menu ul li ul li a:hover span,
+.bottom-menu ul li.active ul li a span, .bottom-menu ul li.active ul li a:hover span
+{background:url(../images/child.png) left bottom no-repeat #ffdd7c}
+
+.bottom-menu ul li ul li.first a span,
+.bottom-menu ul li ul li.first a:hover span,
+.bottom-menu ul li.active ul li.first a span,
+.bottom-menu ul li.active ul li.first a:hover span {
+    background: url(../images/child-last.png) left top no-repeat, url(../images/child.png) left bottom no-repeat #ffdd7c !important;
+    padding:14px 14px 8px 14px;width:142px;line-height:16px;height:auto !important}
+
+.bottom-menu ul li ul li.last a span, .bottom-menu ul li ul li.last a:hover span,
+.bottom-menu ul li.active ul li.last a span, .bottom-menu ul li.active ul li.last a:hover span {
+    background:url(../images/child-last.png) left bottom no-repeat #ffdd7c !important;padding:8px 14px 12px 14px;width:142px;line-height:16px;height:auto !important}
+
+.bottom-menu ul li ul li a:hover span, .bottom-menu ul li ul li.last a:hover span, .bottom-menu ul li ul li.first a:hover span {
+    background-color:#f8cb54 !important;
+}*/
+
+
+
+

@@ -1,22 +1,24 @@
 
 <div class="module">
     <div class="news-top">
-        <h4>НОВОСТИ</h4>
+        <h4>{{ 'NEWS' | translate }}</h4>
     </div>
     <div class="center">
+        <module-content type="news"></module-content>
         <div class="view-all">
-            <a href="#!/news"><span>смотреть все</span></a>
+            <a href="#!/news"><span>{{ 'SHOW_ALL' | translate }}</span></a>
         </div>
     </div>
     <div class="bottom"></div>
 </div>
 <div class="module">
     <div class="advices-top">
-        <h4>СОВЕТЫ СПЕЦИАЛИСТОВ</h4>
+        <h4>{{ 'ADVICES' | translate }}</h4>
     </div>
     <div class="center">
+        <module-content type="advices"></module-content>
         <div class="view-all">
-            <a href="#!/advices"><span>смотреть все</span></a>
+            <a href="#!/advices"><span>{{ 'SHOW_ALL' | translate }}</span></a>
         </div>
     </div>
 

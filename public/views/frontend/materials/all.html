@@ -1,0 +1,14 @@
+<h2>{{ 'MATERIALS' | translate }}:</h2>
+<div class="row">
+    <div class="col-sm-6 col-md-4" ng-repeat="material in materials">
+        <div class="thumbnail">
+            <a href="#!/{{material.type}}/{{material.ref}}" >
+                <img ng-src="/images/gallery/{{material.content[i].mainPhoto.name}}" alt="{{material.content[i].mainPhoto.name}}" style="height: 200px; width: 100%;">
+            </a>
+            <div class="caption">
+                <h3>{{material.content[i].name}}</h3>
+                <p>{{material.content[i].description}}</p>
+            </div>
+        </div>
+    </div>
+</div>

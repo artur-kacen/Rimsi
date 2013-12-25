@@ -1,0 +1,10 @@
+<h2>{{ 'ADVICES' | translate }}:</h2>
+<div class="media" ng-repeat="advice in advices">
+    <a class="pull-left" href="#!/{{advice.type}}/{{advice.ref}}">
+        <img class="media-object" ng-src="/images/gallery/{{advice.content[i].mainPhoto.name}}" style="width: 64px; height: 64px">
+    </a>
+    <div class="media-body">
+        <h4 class="media-heading">{{advice.content[i].name}}</h4>
+        {{advice.content[i].description}}
+    </div>
+</div>

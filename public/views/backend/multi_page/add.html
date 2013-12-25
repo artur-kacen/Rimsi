@@ -1,0 +1,56 @@
+<h1>Добавить {{type_ru}}</h1>
+<form role="form" name="productForm" class="detail-form well col-md-12">
+    <label class="control-label">Ключивое слово:</label>
+    <input class="form-control" type="text" ng-model="ref" required>
+</form>
+<h2>Русский перевод:</h2>
+<div class="col-md-12">
+    <form role="form" name="productForm" class="detail-form well">
+        <div class="form-group " ng-class="{'has-error': productForm.name.$invalid}">
+            <label class="control-label">Название (рус):</label>
+            <input class="form-control" name="name" ng-model="ru_page.name" Обязательное поле>
+            <span ng-show="productForm.name.$error.Обязательное поле" class="help-block">
+                Обязательное поле</span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Краткое описание (рус)</label>
+            <textarea class="form-control" ng-model="ru_page.description" maxlength="255" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Портфолио (рус)</label>
+            <div text-angular="text-angular" ng-model="ru_page.content"></div>
+        </div>
+    </form>
+</div>
+<h2>Latviešu tulkojums:</h2>
+<div class="col-md-12">
+    <form role="form" name="productForm2" class="detail-form well">
+        <div class="form-group " ng-class="{'has-error': productForm2.name.$invalid}">
+            <label class="control-label">Nosaukums (lat)</label>
+            <input class="form-control" name="name" ng-model="lv_page.name" Обязательное поле>
+            <span ng-show="productForm2.name.$error.Обязательное поле" class="help-block">
+                Obligats lauks</span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Iss apraksts (lat)</label>
+            <textarea class="form-control" ng-model="lv_page.description" maxlength="255" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Portfolio (lat)</label>
+            <div text-angular="text-angular" ng-model="lv_page.content"></div>
+        </div>
+    </form>
+</div>
+<div class="col-md-12">
+    <label>Главная фотография:</label>
+    <input type="file" ng-file-select="setMainPhoto($files)" accept="image/*" >
+    <label>Галлерея:</label>
+    <input type="file" ng-file-select="setGallery($files)" accept="image/*" multiple>
+</div>
+<a href="admin#!/products" class="btn">Cancel</a>
+<button ng-click="save()" ng-disabled="isClean() || (productForm.$invalid && productForm2.$invalid)"
+        class="btn btn-primary">Save</button>
+<button ng-click="destroy()"
+        ng-show="product.$id" class="btn btn-danger">Delete</button>
+
+

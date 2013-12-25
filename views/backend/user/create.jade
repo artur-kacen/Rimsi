@@ -7,7 +7,7 @@ block content
             each val in errors
                 =val
         .control-group
-            label.control-label(for='name') Full name
+            label.control-label(for='name') ФИО
         .controls
         input#name(type='text', name="name", placeholder='Full name', value=user.name)
 
@@ -27,7 +27,4 @@ block content
             input#password(type='password', name="password", placeholder='Password')
 
         .form-actions
-            button.btn.btn-primary(type='submit') Sign up
-            &nbsp;
-            | or&nbsp;
-            a.show-login(href="/admin/signin") login
+            button.btn.btn-primary(type='submit') Зарегестрировать

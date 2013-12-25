@@ -1,0 +1,22 @@
+<div class="module-item" ng-repeat="item in items">
+    <div class="module-item-title">
+        <a class="pull-left" href="#!/{{item.type}}/{{item.ref}}">{{item.content[i].name}}</a>
+
+    </div>
+    <div class="module-item-date">
+        {{item.content[i].createdDate}}
+    </div>
+    <div class="module-item-content">
+        <div class="module-item-content-img">
+            <a href="#!/{{item.type}}/{{item.ref}}">
+                <img ng-src="/images/gallery/{{item.content[i].mainPhoto.name}}" ng-show="item.content[i].mainPhoto"/>
+            </a>
+        </div>
+        <div class="module-item-content-text">
+            <p>{{item.content[i].description | truncate:70}}</p>
+        </div>
+        <div class="module-item-content-readmore">
+            <a href="#!/{{item.type}}/{{item.ref}}" class="readmore">{{ 'DETAILED' | translate }}</a>
+        </div>
+    </div>
+</div>

@@ -3,20 +3,20 @@ html(ng-app="rimsi")
     include includes/head
     body(ng-controller="MainCtrl")
         div.header(data-ng-include="'views/header.html'", data-role="navigation")
-        main-menu
+        main-menu(type="top-menu", get-title="getPageTitle")
         div.wrap
             div.container
-                div.row(style="padding-top: 50px;")
-                    div.col-md-1
-                    div#main-carousel.carousel.slide.col-md-9(data-ng-include="'views/frontend/slide.html'", data-ride="carousel")
+                div.row.carousel-content
+                    div#main-carousel.carousel.slide.col-md-12(data-ng-include="'views/frontend/slide.html'", data-ride="carousel")
                 div.content.row
                     div.container
                         div.left-content.col-md-2
                             div(data-ng-include="'views/frontend/left-bar.html'")
-                        div.center-cotnent.col-md-7
+                        div.center-cotnent.col-md-8
                             block content
                         div.right-content.col-md-2
                             div(data-ng-include="'views/frontend/right-bar.html'")
+        div.navbar.navbar-default.navbar-static(data-ng-include="'views/frontend/footer.html'")
         div#blueimp-gallery.blueimp-gallery
             div.slides
             div.title
@@ -39,6 +39,5 @@ html(ng-app="rimsi")
                             Next
                             i.glyphicon.glyphicon-chevron-right
 
-        div.footer
-            div(data-ng-include="'views/frontend/footer.html'")
+
     include includes/foot

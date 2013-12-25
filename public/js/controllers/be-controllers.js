@@ -32,28 +32,46 @@ app.controller('AdminUserCtrl' ['$scope', function($scope){
 
 }]);
 
-
-/**
- * Product Controllers
- */
-
-app.controller('AdminProductMainCtrl', ['$scope', 'ProductsFactory', 'ProductFactory' , '$location', function($scope, ProductsFactory, ProductFactory, $location){
-    $scope.products = ProductsFactory.query();
-
+function MultiPageHandler($scope, type, MultiPageFactory, $location) {
+    $scope.pages = MultiPageFactory.query({type: type});
+    $scope.type = type;
     $scope.delete = function (id) {
-        ProductFactory.delete({productId: id});
-        $scope.products = ProductsFactory.query();
+        if (confirm("Точно хотите удалить?")) {
+            MultiPageFactory.delete({id: id});
+            $scope.pages = MultiPageFactory.query({type: type});
+        }
+
     };
     $scope.edit = function(id) {
-        $location.path("/products/edit/"+id);
+        $location.path("/"+type+"/edit/"+id);
     }
-}]);
+}
+function getContentByLang(content, lang) {
+    for (var i=0; i<content.length; i++) {
+        if (content[i].language == lang) {
+            return content[i];
+        }
+    }
+    return null;
+}
 
-app.controller('AdminProductCtrl', ['$scope', '$location', '$timeout', 'ProductsFactory', 'ProductFactory', '$routeParams', '$upload',
-function($scope, $location, $timeout, ProductsFactory, ProductFactory, $routeParams, $upload){
+function MultiPageModifierHandler($scope, type, $upload, MultiPageFactory, $location, $routeParams) {
+
+    $scope.ref = "";
+    if (typeof $routeParams.id != 'undefined') {
+        $scope.page = MultiPageFactory.get({id: $routeParams.id}, function() {
+            $scope.ru_page = getContentByLang($scope.page.content, "ru_RU");
+            $scope.lv_page = getContentByLang($scope.page.content, "lv_LV");
+            $scope.ref = $scope.page.ref;
+        });
+
+    } else {
+        $scope.ru_page = {ref: $scope.ref, language: "ru_RU"};
+        $scope.lv_page = {ref: $scope.ref, language: "lv_LV"};
+        $scope.page = {content: [$scope.ru_page, $scope.lv_page], type: type, ref: $scope.ref}
+    }
+
     var mainPhoto, galleryPhotos;
-
-
     var uploadPhotos = function() {
         if (typeof mainPhoto != 'undefined') {
             uploadPhoto($scope, $upload, mainPhoto);
@@ -63,32 +81,41 @@ function($scope, $location, $timeout, ProductsFactory, ProductFactory, $routePar
                 uploadPhoto($scope, $upload, galleryPhotos[i]);
             }
         }
-    }
+    };
 
     $scope.save = function() {
+        $scope.ref = $scope.ref.trim().replace(" ", "_");
+        if ($scope.ref == "") {
+            alert("Ключивое слово не указанно!!");
+            return;
+        }
+        $scope.page.ref = $scope.ru_page.ref = $scope.lv_page.ref = $scope.ref;
         if (typeof mainPhoto != 'undefined') {
-            $scope.product.mainPhoto = mainPhoto;
+            $scope.ru_page.mainPhoto = $scope.lv_page.mainPhoto = mainPhoto;
         }
         if (typeof galleryPhotos != 'undefined') {
-            if (typeof $scope.product.galleryPhotos == 'undefined') {
-                $scope.product.galleryPhotos = galleryPhotos;
+            if (typeof $scope.page.galleryPhotos == 'undefined') {
+                $scope.page.galleryPhotos = galleryPhotos;
             } else {
-                $scope.product.galleryPhotos = $scope.product.galleryPhotos.concat(galleryPhotos);
+                $scope.page.galleryPhotos = $scope.page.galleryPhotos.concat(galleryPhotos);
             }
         }
-        if ($scope.product._id != undefined && $scope.product._id != null) {
-            ProductFactory.update($scope.product, function() {
+        if (typeof $scope.page._id != 'undefined' && $scope.page._id != null) {
+            MultiPageFactory.update($scope.page, function() {
                 uploadPhotos();
+                $location.path('/'+type);
             });
         } else {
-            ProductsFactory.create($scope.product, function() {
+            MultiPageFactory.create($scope.page, function() {
                 uploadPhotos();
+                $location.path('/'+type);
             });
         }
-        $location.path('/products');
+
     };
+
     $scope.cancel = function () {
-        $location.path('/products');
+        $location.path('/'+type);
     };
     $scope.setMainPhoto = function($file) {
         mainPhoto = $file[0];
@@ -97,82 +124,62 @@ function($scope, $location, $timeout, ProductsFactory, ProductFactory, $routePar
         galleryPhotos = $files;
     };
 
-    if (typeof $routeParams.id != 'undefined' && $routeParams.id != null ) {
-        $scope.product = ProductFactory.get({productId: $routeParams.id})
-    } else {
-        $scope.product = {content: [{language: 'ru'}, {language: 'lv'}]};
-    }
-
+}
+/**
+ * Product Controllers
+ */
+app.controller('ProductPageCtrl', ['$scope', 'MultiPageFactory', '$location', function($scope, MultiPageFactory, $location){
+    MultiPageHandler($scope, "products", MultiPageFactory, $location);
 }]);
 
-app.controller('AdminMaterialMainCtrl', ['$scope', 'MaterialsFactory', 'MaterialFactory' , '$location', function($scope, MaterialsFactory, MaterialFactory, $location){
-    $scope.materials = MaterialsFactory.query();
-
-    $scope.delete = function (id) {
-        MaterialFactory.delete({materialId: id});
-        $scope.materials = MaterialsFactory.query();
-    };
-    $scope.edit = function(id) {
-        $location.path("/materials/edit/"+id);
-    }
+app.controller('ProductPageModifyCtrl', ['$scope', '$location', '$timeout', 'MultiPageFactory', '$routeParams', '$upload',
+    function($scope, $location, $timeout, MultiPageFactory, $routeParams, $upload){
+        MultiPageModifierHandler($scope, "products", $upload, MultiPageFactory, $location, $routeParams);
+        $scope.type_ru = "продукт";
+    }]);
+/**
+ * Material Controllers
+ */
+app.controller('MaterialPageCtrl', ['$scope', 'MultiPageFactory', '$location', function($scope, MultiPageFactory, $location){
+    MultiPageHandler($scope, "materials", MultiPageFactory, $location);
 }]);
 
-app.controller('AdminMaterialCtrl', ['$scope', '$location', '$timeout', 'MaterialsFactory', 'MaterialFactory', '$routeParams', '$upload',
-    function($scope, $location, $timeout, MaterialsFactory, MaterialFactory, $routeParams, $upload){
-        var mainPhoto, galleryPhotos;
-
-
-        var uploadPhotos = function() {
-            if (typeof mainPhoto != 'undefined') {
-                uploadPhoto($scope, $upload, mainPhoto);
-            }
-            if (typeof galleryPhotos != 'undefined') {
-                for (var i in galleryPhotos) {
-                    uploadPhoto($scope, $upload, galleryPhotos[i]);
-                }
-            }
-        }
-
-        $scope.save = function() {
-            if (typeof mainPhoto != 'undefined') {
-                $scope.material.mainPhoto = mainPhoto;
-            }
-            if (typeof galleryPhotos != 'undefined') {
-                if (typeof $scope.material.galleryPhotos == 'undefined') {
-                    $scope.material.galleryPhotos = galleryPhotos;
-                } else {
-                    $scope.material.galleryPhotos = $scope.material.galleryPhotos.concat(galleryPhotos);
-                }
-            }
-            if ($scope.material._id != undefined && $scope.material._id != null) {
-                MaterialFactory.update($scope.material, function() {
-                    uploadPhotos();
-                });
-            } else {
-                MaterialsFactory.create($scope.material, function() {
-                    uploadPhotos();
-                });
-            }
-            $location.path('/materials');
-        };
-        $scope.cancel = function () {
-            $location.path('/materials');
-        };
-        $scope.setMainPhoto = function($file) {
-            mainPhoto = $file[0];
-        };
-        $scope.setGallery = function($files) {
-            galleryPhotos = $files;
-        };
-
-        if (typeof $routeParams.id != 'undefined' && $routeParams.id != null ) {
-            $scope.material = MaterialFactory.get({materialId: $routeParams.id})
-        } else {
-            $scope.material = {content: [{language: 'ru'}, {language: 'lv'}]};
-        }
-
+app.controller('MaterialPageModifyCtrl', ['$scope', '$location', '$timeout', 'MultiPageFactory', '$routeParams', '$upload',
+    function($scope, $location, $timeout, MultiPageFactory, $routeParams, $upload){
+        MultiPageModifierHandler($scope, "materials", $upload, MultiPageFactory, $location, $routeParams);
+        $scope.type_ru = "материал";
     }]);
 
+/**
+ * News Controllers
+ */
+app.controller('NewsPageCtrl', ['$scope', 'MultiPageFactory', '$location', function($scope, MultiPageFactory, $location){
+    MultiPageHandler($scope, "news", MultiPageFactory, $location);
+}]);
+
+app.controller('NewsPageModifyCtrl', ['$scope', '$location', '$timeout', 'MultiPageFactory', '$routeParams', '$upload',
+    function($scope, $location, $timeout, MultiPageFactory, $routeParams, $upload){
+        MultiPageModifierHandler($scope, "news", $upload, MultiPageFactory, $location, $routeParams);
+        $scope.type_ru = "новость";
+    }]);
+
+/**
+ * Advices Controllers
+ */
+app.controller('AdvicePageCtrl', ['$scope', 'MultiPageFactory', '$location', function($scope, MultiPageFactory, $location){
+    MultiPageHandler($scope, "advices", MultiPageFactory, $location);
+}]);
+
+app.controller('AdvicePageModifyCtrl', ['$scope', '$location', '$timeout', 'MultiPageFactory', '$routeParams', '$upload',
+    function($scope, $location, $timeout, MultiPageFactory, $routeParams, $upload){
+        MultiPageModifierHandler($scope, "advices", $upload, MultiPageFactory, $location, $routeParams);
+        $scope.type_ru = "совет специалистов";
+    }]);
+
+
+/**
+ * Single Page Controllers
+ */
 function PageCtrl($scope, $routeParams, Factory, $location, $upload, ref) {
     $scope.setMainPhoto = function($file) {
         $scope.mainPhoto = $file[0];
@@ -198,6 +205,12 @@ function PageCtrl($scope, $routeParams, Factory, $location, $upload, ref) {
         $location.path('/' + ref);
     }
 }
+app.controller('ContactCtrl', ['$scope', '$location', '$routeParams', 'PageFactory', '$upload', function ($scope, $location, $routeParams, PageFactory, $upload) {
+    PageCtrl($scope, $routeParams, PageFactory, $location, $upload, "contacts");
+}]);
+app.controller('IndexCtrl', ['$scope', '$location', '$routeParams', 'PageFactory', '$upload', function ($scope, $location, $routeParams, PageFactory, $upload) {
+    PageCtrl($scope, $routeParams, PageFactory, $location, $upload, "index");
+}]);
 app.controller('ReviewCtrl', ['$scope', '$location', '$routeParams', 'PageFactory', '$upload', function ($scope, $location, $routeParams, PageFactory, $upload) {
     PageCtrl($scope, $routeParams, PageFactory, $location, $upload, "review");
 }]);
@@ -234,6 +247,12 @@ function PageAddCtrl($scope, Factory, $upload, $location, ref) {
         $location.path('/' + ref);
     }
 }
+app.controller('ContactAddCtrl', ['$scope', '$location', '$routeParams', 'PageFactory', '$upload', function ($scope, $location, $routeParams, PageFactory, $upload) {
+    PageAddCtrl($scope, PageFactory, $upload, $location, "contacts");
+}]);
+app.controller('IndexAddCtrl', ['$scope', '$location', '$routeParams', 'PageFactory', '$upload', function ($scope, $location, $routeParams, PageFactory, $upload) {
+    PageAddCtrl($scope, PageFactory, $upload, $location, "index");
+}]);
 app.controller('ReviewAddCtrl', ['$scope', '$location', '$routeParams', 'PageFactory', '$upload', function ($scope, $location, $routeParams, PageFactory, $upload) {
     PageAddCtrl($scope, PageFactory, $upload, $location, "review");
 }]);

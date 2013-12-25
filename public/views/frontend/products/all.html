@@ -1,0 +1,14 @@
+<h2>{{ 'PRODUCTS' | translate }}:</h2>
+<div class="row">
+    <div class="col-sm-6 col-md-4" ng-repeat="product in products">
+        <div class="thumbnail">
+            <a href="#!/{{product.type}}/{{product.ref}}" >
+                <img ng-src="/images/gallery/{{product.content[i].mainPhoto.name}}" alt="{{product.content[i].mainPhoto.name}}" style="height: 200px; width: 100%;">
+            </a>
+            <div class="caption">
+                <h3>{{product.content[i].name}}</h3>
+                <p>{{product.content[i].description}}</p>
+            </div>
+        </div>
+    </div>
+</div>

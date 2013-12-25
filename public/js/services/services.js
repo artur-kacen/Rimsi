@@ -37,3 +37,13 @@ services.factory('PageFactory', function($resource){
         query: { method: 'GET' }
     })
 });
+
+services.factory('MultiPageFactory', function($resource){
+    var URL = '/multipage';
+    return $resource(URL, {}, {
+        get: { method: 'GET', url: URL+'/:type/:ref', params: {type: "type", ref: "ref"}  },
+        query: { method: 'GET', url: URL+'/:type', isArray: true, params: {type: "type"} },
+        titles: { method: 'GET', url: URL+'/titles', isArray: true},
+        description: { method: 'GET', url: URL+'/description/:type', isArray: true, params: {type: "type"}}
+    })
+});
