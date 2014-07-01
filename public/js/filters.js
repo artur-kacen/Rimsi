@@ -3,6 +3,8 @@
  */
 angular.module("rimsi").filter('truncate', function () {
     return function (text, length, end) {
+        if (text == undefined)
+            return "";
         if (isNaN(length))
             length = 10;
 

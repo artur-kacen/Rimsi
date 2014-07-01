@@ -1,0 +1,20 @@
+<form role="form" style="padding-top: 40px;">
+    <div class="form-group">
+        <label for="to">Кому</label>
+        <input  class="form-control" id="to" placeholder="Введите e-mail" ng-model="email.to">
+    </div>
+    <div class="form-group">
+        <label for="cc">Копия</label>
+        <input  class="form-control" id="cc" placeholder="" ng-model="email.cc">
+    </div>
+    <div class="form-group">
+        <label for="subject">Тема</label>
+        <input  class="form-control" id="subject" placeholder="" ng-model="email.subject">
+    </div>
+    <div class="form-group">
+        <label for="attachments">Приложить файлы</label>
+        <input type="file" id="attachments" ng-file-select="setGallery($files)" multiple>
+    </div>
+    <div text-angular="text-angular" ng-model="email.html"></div>
+    <button class="btn btn-default" ng-click="sendEmail()">Отправить</button>
+</form>

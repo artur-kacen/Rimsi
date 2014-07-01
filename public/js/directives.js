@@ -32,15 +32,46 @@ angular.module("rimsi").directive("mainMenu", ["$translate", "MultiPageFactory",
             scope.$watch(
                 function() {return $translate.uses();},
                 function(newValue) {
-                if (newValue === 'ru_RU') {
-                    scope.i = 0;
-                } else {
-                    scope.i = 1;
-                }
-            })
+                    var i;
+                    if (newValue === 'ru_RU') {
+                        i = 0;
+                    } else {
+                        i = 1;
+                    }
+                    if (scope.i !== i) {
+                        replaceMobileMenu();
+                        scope.i = i;
+                    }
+
+            });
+            initRmm();
         }
     }
-}])
+}]);
+angular.module("rimsi").directive('activeLink', function($location) {
+
+    var link = function(scope, element, attrs) {
+        scope.$watch(function() { return $location.path(); },
+            function(path) {
+                var url = element.find('a').attr('href');
+                if (url) {
+                    url = url.substring(2);
+                }
+
+                if (path == url || path.substring(0, url.length) === url) {
+                    element.addClass("active");
+                } else {
+                    element.removeClass('active');
+                }
+
+            });
+    };
+
+    return {
+        restrict: 'A',
+        link: link
+    };
+});
 
 angular.module("rimsi").directive("moduleContent", ["$translate", "MultiPageFactory", function($translate, MultiPageFactory) {
     return {

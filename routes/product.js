@@ -88,18 +88,3 @@ exports.all = function(req, res) {
     });
 };
 
-exports.uploadPhoto = function(req, res) {
-    var files = req.files;
-    var file = req.files.file;
-    fs.readFile(file.path, function (err, data) {
-        // ...
-        var newPath = __dirname + "/../public/images/gallery/" + file.originalFilename;
-        fs.writeFile(newPath, data, function (err) {
-            if (err == null) {
-                res.send(200);
-            } else {
-                console.error(err);
-            }
-        });
-    });
-};

@@ -24,3 +24,11 @@
 .content-info {
     min-height: 115px;
 }
+.ng-table tr.new td {
+    background-color: #DDD;
+    font-weight: bold;
+}
+
+.email-content {
+    padding: 15px;
+}

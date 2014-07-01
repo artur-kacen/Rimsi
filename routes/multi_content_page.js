@@ -85,13 +85,16 @@ exports.show = function(req, res) {
 
 exports.find_all_types = function(req, res) {
     var type = req.params.type;
-    MultiContentPage.find({type: type}).exec(function(err, page) {
+    MultiContentPage.find({type: type}).exec(function(err, pages) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
-            res.jsonp(page)
+            pages.forEach(function(page) {
+                page.galleryPhotos.sort(gallerySortFunction);
+            });
+            res.jsonp(pages);
         }
     })
 };
@@ -106,10 +109,18 @@ exports.find_type_content = function(req, res) {
                 status: 500
             });
         } else {
-            res.jsonp(page)
+            page.galleryPhotos.sort(gallerySortFunction);
+            res.jsonp(page);
         }
     })
 };
+
+function gallerySortFunction(a, b) {
+    var dateA = (a !== null && a.hasOwnProperty("lastModifiedDate")) ? new Date(a.lastModifiedDate) : 0;
+    var dateB = (b !== null && b.hasOwnProperty("lastModifiedDate")) ? new Date(b.lastModifiedDate) : 0;
+    return dateB-dateA;
+}
+
 //{'ref': 1, 'content.name': 1, 'content.language' : 1}
 exports.get_titles = function(req, res) {
     var type = req.query.type;

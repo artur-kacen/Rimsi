@@ -1,0 +1,67 @@
+<div class="col-md-12">
+    <h2>{{type}}</h2>
+    <table ng-table="tableParams" class="table">
+        <tr ng-repeat-start="email in $data" ng-class="{ 'new': email.flags.indexOf(seenFlag) == -1 }"
+                ng-click="openEmail(email)">
+            <td width="30" style="text-align: left" header="'ng-table/headers/checkbox.html'">
+                <input type="checkbox"  />
+            </td>
+            <td data-title="'Отправитель'" >
+                {{email.from.name}} ({{email.from.address}})
+            </td>
+            <td data-title="'Тема'">
+                {{email.title}}
+            </td>
+            <td data-title="'Дата'">
+                {{email.date}}
+            </td>
+        </tr>
+        <tr ng-repeat-end ng-show="email.showEmail">
+            <td colspan="4">
+                <h3>Действия:</h3>
+                <div>
+                    <button class="" ng-click="reply(email)"><span class="glyphicon glyphicon-share"></span> Ответить</button>
+                    <button class="" ng-click="replyAll(email)"><span class="glyphicon glyphicon-share-alt"></span> Ответить всем</button>
+                    <button class="" ng-click="deleteEmail(email)"><span class="glyphicon glyphicon-trash"></span></span> Удалить</button>
+                    <button class="" ng-click="setUnseen(email)"><span class="glyphicon glyphicon-eye-close"></span></span> Отметить как непрочитанное</button>
+                    <button class="" ng-click="setSeen(email)"><span class="glyphicon glyphicon-eye-open"></span></span> Отметить как прочитанное</button>
+                </div>
+                <div ng-if="email.emailContent.attachments">
+                    <h3>Скачать приложения:</h3>
+                    <div >
+                        <button ng-repeat="attach in email.emailContent.attachments" ng-click="openAttachment(email, attach)">
+                            <span class="glyphicon glyphicon-floppy-save"></span></span>{{attach.fileName}}
+                        </button>
+                    </div>
+                </div>
+                <h3>Письмо:</h3>
+                <div ng-bind-html="to_trusted(email.emailContent.html)" class="email-content"></div>
+            </td>
+        </tr>
+    </table>
+    <script type="text/ng-template" id="ng-table/headers/checkbox.html">
+        <input type="checkbox" ng-model="checkboxes.checked" id="select_all" name="filter-checkbox" value="" />
+    </script>
+
+</div>
+<!--
+
+
+<table class="table table-condensed table-hover">
+    <thead>
+    <tr>
+        <th class="span1"><input type="checkbox"></th>
+        <th class="span2"></th>
+        <th class="span9"></th>
+        <th class="span2"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="email in emails" >
+        <td><input type="checkbox"> <a href="#"><i class="icon-star-empty"></i></a></td>
+        <td><strong>{{email.sender}}</strong></td>
+        <td>{{email.subject}}</td>
+        <td>{{email.createdDate}}</td>
+    </tr>
+    </tbody>
+</table>-->

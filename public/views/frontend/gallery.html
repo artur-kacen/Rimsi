@@ -1,0 +1,10 @@
+<div class="row" ng-repeat="product in products" style="margin-left: 10px">
+    <h2>{{ 'GALLERY' | translate }} "{{product.content[i].name}}" </h2>
+    <div id="links">
+        <div class="col-md-3" ng-repeat="photo in product.galleryPhotos track by $index">
+            <a href="/images/gallery/{{photo.name}}" class="thumbnail" title="{{photo.title}}" data-gallery >
+                <img src="/images/gallery/{{photo.name}}" alt="{{photo.title}}" >
+            </a>
+        </div>
+    </div>
+</div>

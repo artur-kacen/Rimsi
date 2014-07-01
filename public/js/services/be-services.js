@@ -13,51 +13,6 @@ services.factory('ArticleFactory', function($resource){
  * Product REST Factories
  */
 
-services.factory('ProductsFactory', function($resource){
-    return $resource('/admin/products', {}, {
-        query: { method: 'GET', isArray: true },
-        create: { method: 'POST' }
-    })
-});
-
-services.factory('ProductFactory', function($resource){
-    return $resource('/admin/products/:productId', {productId: '@_id'}, {
-        get: { method: 'GET' },
-        update: { method: 'PUT' },
-        delete: { method: 'DELETE' }
-    })
-});
-
-
-services.factory('MaterialsFactory', function($resource){
-    return $resource('/admin/materials', {}, {
-        query: { method: 'GET', isArray: true },
-        create: { method: 'POST' }
-    })
-});
-
-services.factory('MaterialFactory', function($resource){
-    return $resource('/admin/materials/:productId', {materialId: '@_id'}, {
-        get: { method: 'GET' },
-        update: { method: 'PUT' },
-        delete: { method: 'DELETE' }
-    })
-});
-
-services.factory('ArticlesFactory', function($resource){
-    return $resource('/admin/articles', {}, {
-        query: { method: 'GET', isArray: true },
-        create: { method: 'POST' }
-    })
-});
-
-services.factory('ArticleFactory', function($resource){
-    return $resource('/admin/articles/:productId', {articleId: '@_id'}, {
-        get: { method: 'GET' },
-        update: { method: 'PUT' },
-        delete: { method: 'DELETE' }
-    })
-});
 services.factory('PageFactory', function($resource){
     return $resource('/admin/page', {}, {
         query: { method: 'GET' },
@@ -78,3 +33,20 @@ services.factory('MultiPageFactory', function($resource){
         delete: { method: 'DELETE', url: URL+'/:id', params:  {id: '@_id'}}
     })
 });
+
+services.factory('SmtpFactory', function($resource){
+    var URL = '/smtp';
+    return $resource(URL, {}, {
+        query: { method: 'GET',  params: {inbound: '@inbound'}, isArray: true},
+        get: { method: 'GET', url: URL+'/:uid', params: {uid: '@uid'}},
+        delete: { method: 'DELETE', url: URL+'/:uid', params: {uid: '@uid'}},
+        seen: { method: 'POST', url: URL+'/:uid/seen', params: {uid: '@uid', unseen: '@unseen'}},
+        flag: { method: 'POST', url: URL+'/:uid/flag', params: {uid: '@uid', setFlag: '@setFlag'}},
+        send: { method: 'POST' }
+
+    })
+});
+
+services.factory('Email', function() {
+    return {};
+})

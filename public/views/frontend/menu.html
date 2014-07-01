@@ -1,18 +1,18 @@
-<div class="{{type}}">
+<div class="{{type}}" data-menu-style="graphite" data-menu-title="{{ 'MENU' | translate }}">
     <ul class="menu">
-        <li id="current" class="first active"><a href="#!/"><span>{{ 'MAIN' | translate }}</span></a></li>
-        <li class="parent"><a href="#!/products"><span>{{ 'PRODUCTS' | translate }}</span></a>
+        <li data-active-link=""><a href="#!/index"><span>{{ 'MAIN' | translate }}</span></a></li>
+        <li data-active-link=""><a href="#!/products"><span>{{ 'PRODUCTS' | translate }}</span></a>
             <ul>
-                <li ng-repeat="product in products"><a href="#!/products/{{product.ref}}"><span>{{product.content[i].name}}</span></a></li>
+                <li ng-repeat="product in products" data-active-link=""><a href="#!/products/{{product.ref}}"><span>{{product.content[i].name}}</span></a></li>
             </ul>
         </li>
-        <li class="parent"><a href="#!/materials"><span>{{ 'MATERIALS' | translate }}</span></a>
+        <li data-active-link=""><a href="#!/materials"><span>{{ 'MATERIALS' | translate }}</span></a>
             <ul>
-                <li ng-repeat="material in materials"><a href="#!/materials/{{material.ref}}"><span>{{material.content[i].name}}</span></a></li>
+                <li ng-repeat="material in materials" data-active-link=""><a href="#!/materials/{{material.ref}}"><span>{{material.content[i].name}}</span></a></li>
             </ul>
         </li>
-        <li><a href="#!/review"><span>{{getTitle("review")}}</span></a></li>
-        <li><a href="#!/about_us"><span>{{getTitle("about_us")}}</span></a></li>
-        <li class="last"><a href="#!/contacts"><span>{{getTitle("contacts")}}</span></a></li>
+        <li data-active-link=""><a href="#!/review"><span>{{getTitle("review")}}</span></a></li>
+        <li data-active-link=""><a href="#!/about_us"><span>{{getTitle("about_us")}}</span></a></li>
+        <li data-active-link=""><a href="#!/contacts"><span>{{getTitle("contacts")}}</span></a></li>
     </ul>
 </div>

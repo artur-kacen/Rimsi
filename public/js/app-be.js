@@ -3,13 +3,25 @@
 // Declare app level module which depends on filters, and services
 
 var back = angular.module('rimsi-be', ['ngCookies', 'ngRoute', 'pascalprecht.translate', 'rimsi-be.global',
-    'rimsi-be.services', 'rimsi-be.controllers', 'textAngular', 'angularFileUpload']);
+    'rimsi-be.services', 'rimsi-be.controllers', 'textAngular', 'angularFileUpload', 'ngTable']);
 
 back.config(function($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider.
         when('/', {
             templateUrl: 'views/backend/index.html',
             controller: 'AdminMainCtrl'
+        }).
+        when('/email/in', {
+            templateUrl: 'views/backend/email/list.html',
+            controller: 'EmailInboundCtrl'
+        }).
+        when('/email/out', {
+            templateUrl: 'views/backend/email/list.html',
+            controller: 'EmailOutboundCtrl'
+        }).
+        when('/email/send', {
+            templateUrl: 'views/backend/email/new.html',
+            controller: 'CreateEmailCtrl'
         }).
         /*when('/products', {
             templateUrl: 'views/backend/products/index.html',

@@ -10,6 +10,7 @@ module.exports = function(app, passport, auth) {
     var product = require('./../routes/product');
     var multi_page = require('./../routes/multi_content_page');
     var page = require('./../routes/page');
+    var util = require('./../routes/util');
 
     app.get('/admin', auth.requiresLogin, admin.index);
     app.get('/admin/login', user.login);
@@ -40,15 +41,15 @@ module.exports = function(app, passport, auth) {
     app.param('multiPageId', multi_page.page);
 
     //Product routes
-    app.get('/admin/products', auth.requiresLogin, product.all);
+   /* app.get('/admin/products', auth.requiresLogin, product.all);
     app.post('/admin/products', auth.requiresLogin, product.create);
     app.get('/admin/products/:productId', auth.requiresLogin, product.show);
     app.put('/admin/products/:productId', auth.requiresLogin, product.update);
     app.del('/admin/products/:productId', auth.requiresLogin, product.destroy);
-
-    app.post('/admin/upload', auth.requiresLogin, product.uploadPhoto);
+*/
+    app.post('/admin/upload', auth.requiresLogin, util.uploadPhoto);
     //Finish with setting up the userId param
-    app.param('productId', product.product);
+    //app.param('productId', product.product);
 
     // Page routes
     app.get('/admin/page/:pageId', auth.requiresLogin, page.show);
@@ -58,17 +59,17 @@ module.exports = function(app, passport, auth) {
     app.del('/admin/page/:pageId', auth.requiresLogin, page.destroy);
     app.param('pageId', page.page);
 
+    // SMTP routes
+    var smtp = require('./../routes/smtp');
+    app.get('/smtp', auth.requiresLogin, smtp.getEmails);
+    app.get('/smtp/:uid', auth.requiresLogin, smtp.getEmail);
+    app.delete('/smtp/:uid', auth.requiresLogin, smtp.deleteEmail);
+    app.post('/smtp', auth.requiresLogin, smtp.sendEmail);
+    app.post('/smtp/:uid/seen', auth.requiresLogin, smtp.changeSeen);
+    app.post('/smtp/:uid/flag', auth.requiresLogin, smtp.changeFlagged);
+    app.get('/smtp/:uid/attachment/:attach', auth.requiresLogin, smtp.getAttachment);
 
     //Frontend
-    //Article Routes
-    app.get('/articles', article.get_all);/*
-    app.post('/articles', auth.requiresLogin, article.create);
-    app.get('/articles/:articleId', article.show);
-    app.put('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, article.update);
-    app.del('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, article.destroy);*/
-
-    //Finish with setting up the articleId param
-    //app.param('articleId', article.article);
     app.get('/products', product.all);
     app.get('/products/:productId', product.show);
 
@@ -84,5 +85,6 @@ module.exports = function(app, passport, auth) {
     //Home route
     var index = require('./../routes/index');
     app.get('/', index.render);
+    app.get('/constructor', index.constructor);
 
 };

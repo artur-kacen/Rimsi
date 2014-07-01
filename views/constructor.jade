@@ -1,0 +1,14 @@
+html(ng-app="rimsi")
+    include includes/head
+    body(ng-controller="MainCtrl")
+        div.header(data-ng-include="'views/header.html'", data-role="navigation")
+        div.wrap
+            div.container
+                main-menu(type="rmm", get-title="getPageTitle", )
+                div.content.row
+                    div.container
+                        div.col-md-12
+                            div(data-ng-view)
+        div.footer.navbar.navbar-default.navbar-static(data-ng-include="'views/frontend/footer.html'")
+
+    include includes/foot

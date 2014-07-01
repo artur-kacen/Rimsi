@@ -9,7 +9,15 @@ front.config(function($routeProvider, $locationProvider, $httpProvider, $transla
         $routeProvider
             .when('/index', {
                 templateUrl: 'views/frontend/index.html',
-                controller: 'PageCtrl'
+                controller: 'IndexCtrl'
+            })
+            .when('/constructor', {
+                templateUrl: 'views/frontend/constructor.html',
+                controller: 'ConstructorCtrl'
+            })
+            .when('/gallery', {
+                templateUrl: 'views/frontend/gallery.html',
+                controller: 'GalleryCtrl'
             })
             .when('/products', {
                 templateUrl: 'views/frontend/products/all.html',
@@ -81,6 +89,8 @@ front.config(function($routeProvider, $locationProvider, $httpProvider, $transla
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
         $translateProvider.translations('ru_RU', {
+            'MENU': 'Меню',
+            'TITLE': 'Шкафы-купе на заказ в Риге от компании "Rimsi" | заказать шкаф купе.',
             'MAIN': 'Главная',
             'WORK_TIME': 'Время работы:',
             'PRODUCTS': 'Продукты',
@@ -99,13 +109,15 @@ front.config(function($routeProvider, $locationProvider, $httpProvider, $transla
             'DETAILED': 'подробнее'
         });
         $translateProvider.translations('lv_LV', {
+            'MENU': 'Izvēlne',
+            'TITLE': 'Sienas skapji pasūtšana Rīgā no "Rimsi".',
             'MAIN': 'Sākums',
             'WORK_TIME': 'Darba laiks:',
             'PRODUCTS': 'Izstrādājumi',
             'MATERIALS': 'Materiāli',
             'CONSTRUCTOR': 'Online konstruktors',
             'SPEC_OFFERS': 'īpašie piedāvājumi',
-            'GALLERY': 'Foto galerija',
+            'GALLERY': 'Foto \ngalerija',
             'MEASURER': 'Mērītāja izsaukums',
             'ASSEMBLY': 'Montāža',
             'DELIVERY': 'Piegāde',
@@ -119,7 +131,13 @@ front.config(function($routeProvider, $locationProvider, $httpProvider, $transla
         $translateProvider.uses('ru_RU');
         $translateProvider.preferredLanguage('ru_RU');
 });
-
+front.run(function($rootScope) {
+    if ($(window).width() <= 768) {
+        $(".left-content").append($(".right-content").html());
+        $(".right-content").html("");
+    }
+    $rootScope.title = "TITLE";
+});
 $(function () {
     $('#blueimp-gallery').data('useBootstrapModal', false);
     $('#blueimp-gallery').toggleClass('blueimp-gallery-controls', true);

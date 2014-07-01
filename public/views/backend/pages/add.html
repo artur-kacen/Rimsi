@@ -1,17 +1,27 @@
-<input type="text" ng-model="ru_page.name"/>
 <h2>{{ru_page.name}}</h2>
 <div class="col-md-12">
     <form role="form" name="productForm" class="detail-form well">
+        <div class="form-group " ng-class="{'has-error': productForm.name.$invalid}">
+            <label class="control-label">Название (рус):</label>
+            <input class="form-control" name="name" ng-model="ru_page.name" Обязательное поле>
+            <span class="help-block">
+                Обязательное поле</span>
+        </div>
         <div class="form-group">
             <label class="control-label">Портфолио (рус)</label>
             <div text-angular="text-angular" ng-model="ru_page.content"></div>
         </div>
     </form>
 </div>
-<input type="text" ng-model="lv_page.name"/>
 <h2>{{lv_page.name}}</h2>
 <div class="col-md-12">
     <form role="form" name="productForm2" class="detail-form well">
+        <div class="form-group " ng-class="{'has-error': productForm2.name.$invalid}">
+            <label class="control-label">Nosaukums (lat)</label>
+            <input class="form-control" name="name" ng-model="lv_page.name" Обязательное поле>
+            <span class="help-block">
+                Obligats lauks</span>
+        </div>
         <div class="form-group">
             <label class="control-label">Portfolio (lat)</label>
             <div text-angular="text-angular" ng-model="lv_page.content"></div>
@@ -21,6 +31,14 @@
 <div class="col-md-12">
     <label>Главная фотография:</label>
     <input type="file" ng-file-select="setMainPhoto($files)" accept="image/*" >
+    <div class="row" ng-show="ru_page.mainPhoto">
+        <div class="col-md-3">
+            <a class="thumbnail">
+                <img ng-src="/images/gallery/{{ru_page.mainPhoto.name}}" alt="{{ru_page.mainPhoto.title}}" />
+            </a>
+        </div>
+        <h2><span class="col-md-9 glyphicon glyphicon-trash" ng-click="deleteMainPhoto()" data-toggle="tooltip" title="Удалить"></span></h2>
+    </div>
 </div>
 
 <a href="admin#!/{{ru_page.ref}}" class="btn">Cancel</a>

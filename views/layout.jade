@@ -1,34 +1,34 @@
-!!!
+doctype
 html(ng-app="rimsi")
     include includes/head
     body(ng-controller="MainCtrl")
         div.header(data-ng-include="'views/header.html'", data-role="navigation")
-        main-menu(type="top-menu", get-title="getPageTitle")
         div.wrap
             div.container
+                main-menu(type="rmm", get-title="getPageTitle", )
                 div.row.carousel-content
-                    div#main-carousel.carousel.slide.col-md-12(data-ng-include="'views/frontend/slide.html'", data-ride="carousel")
+                    div#main-carousel.carousel.slide.col-xs-12.col-sm-12.col-md-12(data-ng-include="'views/frontend/slide.html'", data-ride="carousel")
                 div.content.row
                     div.container
-                        div.left-content.col-md-2
+                        div.left-content.col-xs-4.col-sm-3.col-md-3.col-lg-2
                             div(data-ng-include="'views/frontend/left-bar.html'")
-                        div.center-cotnent.col-md-8
+                        div.center-content.col-xs-8.col-sm-6.col-md-6.col-lg-8
                             block content
-                        div.right-content.col-md-2
+                        div.right-content.col-xs-1.col-sm-3.col-md-3.col-lg-2
                             div(data-ng-include="'views/frontend/right-bar.html'")
-        div.navbar.navbar-default.navbar-static(data-ng-include="'views/frontend/footer.html'")
+        div.footer.navbar.navbar-default.navbar-static(data-ng-include="'views/frontend/footer.html'")
         div#blueimp-gallery.blueimp-gallery
             div.slides
             div.title
-            a.prev‹
-            a.next›
-            a.close×
+            a.prev "‹"
+            a.next "›"
+            a.close "×"
             a.play-pause
             ol.indicator
             div.modal.fade
                 div.modal-dialog
                     div.modal-header
-                        button.close(type="button", arial-hidden="true")&times;
+                        button.close(type="button", arial-hidden="true") "&times;"
                         h4.modal-title
                     div.modal-body.next
                     div.modal-footer

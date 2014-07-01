@@ -2,11 +2,11 @@
     <h2>{{product.content[i].name}}</h2>
     <div>
         <img class="content-photo" ng-src="/images/gallery/{{product.content[i].mainPhoto.name}}" ng-show="product.content[i].mainPhoto"/>
-        <div class="content-info" ng-bind-html="product.content[i].content" class="ng-binding"></div>
+        <div class="content-info text" ng-bind-html="product.content[i].content" class="ng-binding"></div>
     </div>
     <h2>{{ 'GALLERY' | translate }} "{{product.content[i].name}}" </h2>
     <div id="links">
-        <div class="col-md-3" ng-repeat="photo in product.galleryPhotos">
+        <div class="col-md-3" ng-repeat="photo in product.galleryPhotos track by $index">
             <a href="/images/gallery/{{photo.name}}" class="thumbnail" title="{{photo.title}}" data-gallery >
                 <img src="/images/gallery/{{photo.name}}" alt="{{photo.title}}" >
             </a>

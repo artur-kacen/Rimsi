@@ -1,18 +1,70 @@
-.text {
-    font-family: "!Neo'w";
-    color: rgb(120, 95, 73);
-    text-shadow: 1px 2px 3px rgb(0, 0, 0);
+.bold {
+    font-weight: bold;
 }
-
 h1,
 h2,
 h3,
 h4,
 h5,
-p {
+p,
+.text{
     font-family: "!Neo'w";
     color: rgb(120, 95, 73);
+
 }
+p,
+.text {
+    font-size: 16px;
+}
+ul.nav {border-bottom: 1px solid #999;}
+ul.nav li a {display: block; text-decoration: none; color: #333; padding: 5px; border: 1px solid #fff;}
+ul.nav > li:hover {border: 1px solid #666; border-bottom: 1px solid #fff;}
+ul.nav li a:hover {background: #ccc; border: 1px solid #999;}
+ul.nav > li {display: inline-block; position: relative; border: 1px solid #fff;}
+ul.nav > li ul {display: none; position: absolute; left: -1px; width: 150px; border: 1px solid #666; border-top-color: #fff; margin-top: 1px;}
+ul.nav > li:hover ul {display: block;}
+ul.nav > li ul li {display: block;}
+
+.rmm {
+    /*padding: 0 0 8px 0;*/
+    position: relative;
+    display: inline-block;
+
+}
+
+ul.rmm-main-list li:hover > ul {
+    display: block !important;
+}
+ul.rmm-main-list > li ul li {
+    display: block;
+
+}
+ul.rmm-main-list > li a span {
+    display: inline;
+    float: left;
+    position: relative
+}
+.rmm  ul > li  ul {
+    top: 36px;
+    display: none;
+    position: absolute;
+    left: -3px;
+    z-index: 15;
+}
+
+.rmm > ul > li ul li a span,
+.rmm > ul > li ul li a:hover span,
+.rmm > ul > li.active ul li a span,
+.rmm > ul > li.active ul li a:hover span {
+    text-align: center;
+    border-top:1px solid #555555;
+    font-size: 14px;
+    padding: 8px 14px 8px 14px;
+    width: 132px;
+    line-height: 16px;
+    height: auto !important;
+}
+
 
 .content-photo {
     width: 200px;
@@ -43,42 +95,50 @@ a:hover {
     opacity: 0.5;
 }
 
-.center-header {
-    padding: 0;
-    height: 130px;
-    background: url(../images/header_right.png) no-repeat;
-}
-
-.left-header {
-    padding: 0;
-    height: 130px;
-    background: url(../images/header_left.png) right top no-repeat;
-}
-
-.header {
+div.header {
     margin-top: 25px;
     background: url(../images/header.png) repeat-x;
-    height: 104px;
+    height: 102px;
 }
 
-.worktime {
-    padding: 0;
-    color: #000000;
-    top: 35px;
-    font-family: "Century Gothic";
-    font-size: 16px;
-    line-height: 20px;
-    text-align: left;
-    text-shadow: 1px 0px 3px rgba(0, 0, 0, 0.53);
+div.header img {
+    max-width: 100%;
+}
+@media (min-width: 768px) {
+    .worktime {
+        padding: 0;
+        color: #000000;
+        top: 35px;
+        font-family: "Century Gothic";
+        font-size: 16px;
+        line-height: 20px;
+        text-align: left;
+        text-shadow: 1px 0px 3px rgba(0, 0, 0, 0.53);
+    }
+    .worktime a {
+        color: #000000;
+        font-family: "Century Gothic";
+        font-size: 16px;
+        line-height: 20px;
+        text-align: left;
+        text-shadow: 1px 0px 3px rgba(0, 0, 0, 0.53);
+    }
+    .clock {
+        margin-left: -30px;
+        display: inline;
+    }
+
+    .mobile {
+        display: none;
+    }
+    .not-mobile {
+        display: inline;
+    }
 }
 
-.clock {
-    margin-left: -30px;
-}
 
 .clock img {
     width: 100px;
-    #background: url(../images/clock.png) left top no-repeat;
 }
 
 .top-menu {
@@ -147,7 +207,8 @@ a:hover {
     display: block !important;
 }
 
-.top-menu ul li ul li, .top-menu ul li.active ul li {
+.top-menu ul li ul li,
+.top-menu ul li.active ul li {
     display: block;
     height: auto !important;
 }
@@ -169,7 +230,7 @@ a:hover {
 .top-menu > ul > li.active ul li a:hover span {
     font-size: 14px;
     font-family: "Century Gothic";
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 1);
+    /*text-shadow: 1px 1px 2px rgba(255, 255, 255, 1);*/
     padding: 8px 14px 8px 14px;
     width: 115px;
     line-height: 16px;
@@ -207,17 +268,9 @@ a:hover {
     font-size: 13px;
 }
 
-.bottom-menu ul li a:hover span,
-.bottom-menu ul li.active a span {
-    display: inline;
-    float: left;
-    position: relative;
-    padding: 0 52px 0 52px;
+.bottom-menu >ul li a:hover span,
+.bottom-menu >ul >li.active >a >span {
     background-color: #F5CD22 !important;
-    line-height: 44px;
-    color: #000000;
-    font-family: "Arial";
-    font-size: 13px;
 }
 
 .bottom-menu ul li:hover > ul {
@@ -241,68 +294,38 @@ a:hover {
 }
 
 .bottom-menu ul li ul li a span,
-.bottom-menu ul li ul li a:hover span,
-.bottom-menu ul li.active ul li a span,
-.bottom-menu ul li.active ul li a:hover span {
+.bottom-menu ul li ul li a:hover span {
     font-size: 14px;
     color: #000000;
     font-family: "Century Gothic";
     padding: 8px 14px 8px 14px;
-    width: 142px;
-    line-height: 16px;
-    height: auto !important
-}
-
-ul.menu li ul li a span,
-ul.menu li ul li a:hover span,
-ul.menu li.active ul li a span,
-ul.menu li.active ul li a:hover span {
-    background: url(../images/child.png) left bottom no-repeat #A79E93;
-}
-
-ul.menu li ul li:first-child a span,
-ul.menu li ul li:first-child a:hover span,
-ul.menu li.active ul li:first-child a span,
-ul.menu li.active ul li:first-child a:hover span {
-    background: url(../images/child-last.png) left top no-repeat, url(../images/child.png) left bottom no-repeat #A79E93 !important;
-    padding: 14px 14px 8px 14px;
-    width: 115px;
-    line-height: 16px;
-    height: auto !important;
-}
-
-ul.menu li ul li:last-child a span,
-ul.menu li ul li:last-child a:hover span,
-ul.menu li.active ul li:last-child a span,
-ul.menu li.active ul li:last-child a:hover span {
-    background: url(../images/child-last.png) left bottom no-repeat #A79E93 !important;
-    padding: 8px 14px 12px 14px;
-    width: 115px;
-    line-height: 16px;
-    height: auto !important;
-}
-
-.bottom-menu ul.menu li ul li a span,
-.bottom-menu ul.menu li ul li:first-child a span,
-.bottom-menu ul.menu li ul li:last-child a span {
     width: 162px;
+    line-height: 16px;
+    height: auto !important;
+    background: url(../images/child.png) left bottom no-repeat #8c7f75 !important;
 }
 
-.bottom-menu ul.menu li ul li a span {
-    background-color: #8c7f75;
-}
-
-.bottom-menu ul.menu li ul li:first-child a span {
+.bottom-menu ul.menu li ul li:first-child a span,
+.bottom-menu ul.menu li ul li:first-child a:hover span {
     background: url(../images/child-last.png) left top no-repeat, url(../images/child.png) left bottom no-repeat #8c7f75 !important;
+    padding: 14px 14px 8px 14px;
+    width: 162px;
+    line-height: 16px;
+    height: auto !important;
 }
 
-.bottom-menu ul.menu li ul li:last-child a span {
+.bottom-menu ul.menu li ul li:last-child a span,
+.bottom-menu ul.menu li ul li:last-child a:hover span {
     background: url(../images/child-last.png) left bottom no-repeat #8c7f75 !important;
+    padding: 8px 14px 12px 14px;
+    width: 162px;
+    line-height: 16px;
+    height: auto !important;
 }
 
-ul.menu li ul li a:hover span,
-ul.menu li ul li:last-child a:hover span,
-ul.menu li ul li:first-child a:hover span {
+.bottom-menu ul.menu li ul li a:hover span,
+.bottom-menu ul.menu li ul li:last-child a:hover span,
+.bottom-menu ul.menu li ul li:first-child a:hover span {
     background-color: #F5CD22 !important;
 }
 
@@ -310,7 +333,7 @@ ul.menu li ul li:first-child a:hover span {
 -------------------------------------------------- */
 
 .carousel-content {
-    padding: 40px 0 40px 0;
+    padding: 0 0 40px 0;
 }
 
 /* Carousel base class */
@@ -363,7 +386,7 @@ ul.menu li ul li:first-child a:hover span {
 
 .wrap {
     width: 100%;
-    background: url(../images/main-bg.png) top repeat-x;
+    background: url(../images/main-bg.png) top repeat;
     min-height: 1000px;
     height: 100%;
 }
@@ -396,252 +419,274 @@ footer p {
     padding: 5px 0 12px 10px
 }
 
-.left-content {
-    padding-left: 0px;
-}
 
-.left-menu-buttons {
-    padding-bottom: 15px;
-}
-
-.left-menu-button a {
-    cursor: pointer;
-    display: block;
-
-    width: 195px;
-    height: 62px;
-    text-decoration: none;
-    color: #000000;
-    padding: 0px 0 10px 66px;
-    text-align: center;
-}
 
 .constructor a {
-    background: url(../images/tools_button.png) top no-repeat;
+    background: url(../images/tools.png) top no-repeat;
 }
 
 .constructor > a:hover {
-    background: url(../images/tools_button_hover.png) top no-repeat;
+    background-position:0 -72px
 }
 
 .special-offer a {
-    background: url(../images/box_button.png) top no-repeat;
+    background: url(../images/box.png) top no-repeat;
 }
 
 .special-offer > a:hover {
-    background: url(../images/box_button_hover.png) top no-repeat;
+    background-position:0 -72px
 }
 
 .photo-gallery a {
-    background: url(../images/camera_button.png) top no-repeat;
+    background: url(../images/photo.png) top no-repeat;
 }
 
 .photo-gallery > a:hover {
-    background: url(../images/camera_button_hover.png) top no-repeat;
+    background-position:0 -72px
 }
 
 .measurer a {
-    background: url(../images/metr_button.png) top no-repeat;
+    background: url(../images/measure.png) top no-repeat;
 }
 
 .measurer > a:hover {
-    background: url(../images/metr_button_hover.png) top no-repeat;
+    background-position:0 -72px
 }
 
 .delivery a {
-    background: url(../images/avto_button.png) top no-repeat;
+    background: url(../images/delivery.png) top no-repeat;
 }
 
 .delivery > a:hover {
-    background: url(../images/avto_button_hover.png) top no-repeat;
+    background-position:0 -72px
 }
 
 .assembly a {
-    background: url(../images/drel_button.png) top no-repeat;
+    background: url(../images/assembly.png) top no-repeat;
 }
 
 .assembly > a:hover {
-    background: url(../images/drel_button_hover.png) top no-repeat;
+    background-position:0 -72px
 }
 
-.left-menu-button a span {
-    line-height: 30px;
-    font-size: 15px;
-    font-weight: bold;
-    font-family: "Century Gothic";
-    text-transform: uppercase;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 1);
+@media (min-width: 768px) {
+    .left-content {
+        padding-left: 0px;
+    }
+
+    .left-menu-buttons {
+        padding-bottom: 15px;
+    }
+
+    .left-menu-button a {
+        cursor: pointer;
+        display: block;
+
+        width: 195px;
+        height: 62px;
+        text-decoration: none;
+        color: #000000;
+        padding: 0px 0 10px 79px;
+        text-align: center;
+    }
+    .left-menu-button a span {
+        line-height: 30px;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: "Century Gothic";
+        text-transform: uppercase;
+        /*text-shadow: 1px 1px 2px rgba(255, 255, 255, 1);*/
+    }
+
+    .left-menu-button a span.small {
+        line-height: 60px;
+    }
+
+    .left-menu-button > a:hover {
+        text-decoration: none;
+        color: #000000;
+    }
+
+    .module {
+        display: block;
+        width: 203px;
+        position: relative
+    }
+
+    .module .news-top, .module .advices-top {
+        text-align: center;
+        margin-top: 5px;
+        width: 203px;
+        height: 48px;
+        background: url(../images/m-top.png) top no-repeat;
+        display: block;
+        position: relative;
+        float: left
+    }
+
+    .module .news-top h4 {
+        margin: 0;
+        text-transform: uppercase;
+        line-height: 50px;
+        color: rgb(120, 95, 73);
+        font-size: 13px;
+        font-family: "Century Gothic";
+        font-weight: 700;
+    }
+
+    .module .center {
+        padding: 0 12px 0 12px;
+        margin: 0;
+        width: 203px;
+        background: url(../images/m-center.png) repeat-y;
+        display: block;
+        position: relative;
+        float: left
+    }
+
+    .module .bottom {
+        margin: 0;
+        width: 203px;
+        height: 29px;
+        background: url(../images/m-bottom.png) top no-repeat;
+        display: block;
+        position: relative;
+        float: left
+    }
+
+    .module .advices-top H4 {
+        margin: 0;
+        text-transform: uppercase;
+        width: 150px;
+        line-height: 14px;
+        color: rgb(120, 95, 73);
+        font-size: 11px;
+        font-family: "Century Gothic";
+        font-weight: bold;
+        padding: 10px 0px 0 50px;
+    }
+
+    .module .center .view-all {
+        float: left;
+        text-align: center;
+        position: relative;
+        left: 35px;
+        display: block;
+        width: 112px;
+        height: 29px;
+        background: url(../images/viewall.png) top no-repeat;
+    }
+
+    .module .center .view-all a span {
+        text-align: center;
+        color: #689208;
+        font-size: 12px;
+        line-height: 26px;
+        padding-right: 4px;
+        text-decoration: underline
+    }
+
+    .module-item {
+        position: relative;
+        display: block;
+        width: 100%;
+        float: left;
+        margin-bottom: 10px;
+        padding: 0 5px 0 5px;
+    }
+
+    .module-item-title {
+        position: relative;
+        display: block;
+        float: left;
+        margin: 0;
+        text-align: left;
+        width: 100%;
+        line-height: 14px
+    }
+
+    .module-item-title a {
+        margin: 0;
+        font-size: 12px;
+        color: #72501a;
+        line-height: 14px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .module-item-date {
+        position: relative;
+        display: block;
+        float: left;
+        margin: 0 0 0 0;
+        padding: 0;
+        font-size: 12px;
+        color: #9b947f;
+        width: 100%;
+    }
+
+    .module-item-content-img {
+        position: relative;
+        display: inline-block;
+        float: left;
+        width: 90px;
+        height: 70px;
+    }
+    .module-item-content-img  img{
+        width: 90px;
+        height: 70px;
+    }
+    .module-item-content-text {
+        margin: 0 0 0 3px;
+        position: relative;
+        display: inline-block;
+        float: left;
+        width: 76px;
+        vertical-align: top
+    }
+    .module-item-content-text p {
+        line-height: 14px;
+        font-size: 12px;
+        margin: 0;
+    }
+
+    .module-item-content-readmore {
+        position: relative;
+        display: block;
+        float: right;
+        top: -3px;
+        right: 2px;
+    }
+    .readmore {
+        text-decoration: underline;
+        color: #60920e;
+        font-size: 12px;
+        color: #60920e !important;
+    }
+
+    .right-content {
+        padding: 0;
+    }
+
+    .content-top .content-module .content-module-footer a span {
+        text-transform: uppercase;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 20px;
+        line-height: 40px;
+    }
+
+    .content-top .content-module .content-module-footer {
+        background: url(../images/content_module_footer.png) center no-repeat;
+        height: 45px;
+        text-align: center;
+        margin-top: -4px;
+        background-size: contain;
+    }
 }
 
-.left-menu-button a span.small {
-    line-height: 60px;
-}
 
-.left-menu-button > a:hover {
-    text-decoration: none;
-    color: #000000;
-}
 
-.module {
-    display: block;
-    width: 203px;
-    position: relative
-}
-
-.module .news-top, .module .advices-top {
-    text-align: center;
-    margin-top: 5px;
-    width: 203px;
-    height: 48px;
-    background: url(../images/m-top.png) top no-repeat;
-    display: block;
-    position: relative;
-    float: left
-}
-
-.module .news-top h4 {
-    margin: 0;
-    text-transform: uppercase;
-    line-height: 50px;
-    color: rgb(120, 95, 73);
-    font-size: 13px;
-    font-family: "Century Gothic";
-    font-weight: 600;
-}
-
-.module .center {
-    padding: 0 12px 0 12px;
-    margin: 0;
-    width: 203px;
-    background: url(../images/m-center.png) repeat-y;
-    display: block;
-    position: relative;
-    float: left
-}
-
-.module .bottom {
-    margin: 0;
-    width: 203px;
-    height: 29px;
-    background: url(../images/m-bottom.png) top no-repeat;
-    display: block;
-    position: relative;
-    float: left
-}
-
-.module .advices-top H4 {
-    margin: 0;
-    text-transform: uppercase;
-    width: 150px;
-    line-height: 14px;
-    color: rgb(120, 95, 73);
-    font-size: 11px;
-    font-family: "Century Gothic";
-    font-weight: bold;
-    padding: 10px 0px 0 50px;
-}
-
-.module .center .view-all {
-    float: left;
-    text-align: center;
-    position: relative;
-    left: 35px;
-    display: block;
-    width: 112px;
-    height: 29px;
-    background: url(../images/viewall.png) top no-repeat;
-}
-
-.module .center .view-all a span {
-    text-align: center;
-    color: #689208;
-    font-size: 12px;
-    line-height: 26px;
-    padding-right: 4px;
-    text-decoration: underline
-}
-
-.module-item {
-    position: relative;
-    display: block;
-    width: 100%;
-    float: left;
-    margin-bottom: 10px;
-    padding: 0 5px 0 5px;
-}
-
-.module-item-title {
-    position: relative;
-    display: block;
-    float: left;
-    margin: 0;
-    text-align: left;
-    width: 100%;
-    line-height: 14px
-}
-
-.module-item-title a {
-    margin: 0;
-    font-size: 12px;
-    color: #72501a;
-    line-height: 14px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.module-item-date {
-    position: relative;
-    display: block;
-    float: left;
-    margin: 0 0 0 0;
-    padding: 0;
-    font-size: 12px;
-    color: #9b947f;
-    width: 100%;
-}
-
-.module-item-content-img {
-    position: relative;
-    display: inline-block;
-    float: left;
-    width: 90px;
-    height: 70px;
-}
-.module-item-content-img  img{
-    width: 90px;
-    height: 70px;
-}
-.module-item-content-text {
-    margin: 0 0 0 3px;
-    position: relative;
-    display: inline-block;
-    float: left;
-    width: 76px;
-    vertical-align: top
-}
-.module-item-content-text p {
-    line-height: 14px;
-    font-size: 12px;
-    margin: 0;
-}
-
-.module-item-content-readmore {
-    position: relative;
-    display: block;
-    float: right;
-    top: -3px;
-    right: 2px;
-}
-.readmore {
-    text-decoration: underline;
-    color: #60920e;
-    font-size: 12px;
-    color: #60920e !important;
-}
-
-.right-content {
-    padding: 0;
-}
 
 .content-top {
     padding: 0 10px 0 10px;
@@ -662,20 +707,9 @@ footer p {
     width: 100%;
 }
 
-.content-top .content-module .content-module-footer {
-    background: url(../images/content_module_footer.png) center no-repeat;
-    height: 45px;
-    text-align: center;
-    margin-top: -4px;
-}
 
-.content-top .content-module .content-module-footer a span {
-    text-transform: uppercase;
-    vertical-align: middle;
-    text-align: center;
-    font-size: 20px;
-    line-height: 40px;
-}
+
+
 
 /* Footer
 

@@ -2,23 +2,28 @@
     <h1>Добавленные </h1>
     <div  ng-repeat="page in pages" class="well">
         <h2>{{page.content[0].name}}
-            <span class="glyphicon glyphicon-pencil" ng-click="edit(page._id)"></span>
-            <span class="glyphicon glyphicon-trash" ng-click="delete(page._id)"></span></h2>
+            <span class="pull-right">
+                <span class="glyphicon glyphicon-pencil" ng-click="edit(page._id)" data-toggle="tooltip" title="Редактировать"></span>
+                <span class="glyphicon glyphicon-trash" ng-click="delete(page._id)" data-toggle="tooltip" title="Удалить"></span>
+            </span>
+        </h2>
         <div ng-repeat="cont in page.content">
-            <h3> Наименование: "{{ cont.name }}" ({{cont.language}})</h3>
-            <h3>Краткое описание: ({{cont.language}})</h3>
+            <h3>Язык: {{cont.language}}</h3>
+            <h3> Наименование: "{{ cont.name }}"</h3>
+            <h3>Краткое описание: </h3>
             <p>{{cont.description}}</p>
             <div>
-                <h3>Портфолио ({{cont.language}})</h3>
+                <h3>Портфолио:</h3>
                 <div>
                     <img class="content-photo" ng-src="/images/gallery/{{cont.mainPhoto.name}}" ng-show="cont.mainPhoto"/>
                     <div ng-bind-html="cont.content" class="content-info"></div>
                 </div>
             </div>
+            <hr />
         </div>
         <div class="row">
             <h2>Галлерея</h2>
-            <div class="col-md-3" ng-repeat="photo in page.galleryPhotos">
+            <div class="col-md-3" ng-repeat="photo in page.galleryPhotos track by $index">
                 <a class="thumbnail">
                     <img ng-src="/images/gallery/{{photo.name}}" alt="{{photo.title}}" ng-click="set_current_photo(photo)">
                 </a>

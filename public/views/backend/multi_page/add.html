@@ -8,8 +8,8 @@
     <form role="form" name="productForm" class="detail-form well">
         <div class="form-group " ng-class="{'has-error': productForm.name.$invalid}">
             <label class="control-label">Название (рус):</label>
-            <input class="form-control" name="name" ng-model="ru_page.name" Обязательное поле>
-            <span ng-show="productForm.name.$error.Обязательное поле" class="help-block">
+            <input class="form-control" name="name" ng-model="ru_page.name" required>
+            <span class="help-block">
                 Обязательное поле</span>
         </div>
         <div class="form-group">
@@ -27,8 +27,8 @@
     <form role="form" name="productForm2" class="detail-form well">
         <div class="form-group " ng-class="{'has-error': productForm2.name.$invalid}">
             <label class="control-label">Nosaukums (lat)</label>
-            <input class="form-control" name="name" ng-model="lv_page.name" Обязательное поле>
-            <span ng-show="productForm2.name.$error.Обязательное поле" class="help-block">
+            <input class="form-control" name="name" ng-model="lv_page.name" required>
+            <span class="help-block">
                 Obligats lauks</span>
         </div>
         <div class="form-group">
@@ -44,11 +44,29 @@
 <div class="col-md-12">
     <label>Главная фотография:</label>
     <input type="file" ng-file-select="setMainPhoto($files)" accept="image/*" >
+    <div class="row" ng-show="page.content[0].mainPhoto">
+        <div class="col-md-3">
+            <a class="thumbnail">
+                <img ng-src="/images/gallery/{{page.content[0].mainPhoto.name}}" alt="{{page.content[0].mainPhoto.title}}" />
+            </a>
+        </div>
+        <h2><span class="col-md-9 glyphicon glyphicon-trash" ng-click="deleteMainPhoto()" data-toggle="tooltip" title="Удалить"></span></h2>
+    </div>
+
+
     <label>Галлерея:</label>
     <input type="file" ng-file-select="setGallery($files)" accept="image/*" multiple>
+    <div class="row" ng-repeat="photo in page.galleryPhotos track by $index">
+        <div class="col-md-3">
+            <a class="thumbnail">
+                <img ng-src="/images/gallery/{{photo.name}}" alt="{{photo.title}}" />
+            </a>
+        </div>
+        <h2><span class="col-md-9 glyphicon glyphicon-trash " ng-click="deleteFromGallery($index)" data-toggle="tooltip" title="Удалить"></span></h2>
+    </div>
 </div>
 <a href="admin#!/products" class="btn">Cancel</a>
-<button ng-click="save()" ng-disabled="isClean() || (productForm.$invalid && productForm2.$invalid)"
+<button ng-click="save()"
         class="btn btn-primary">Save</button>
 <button ng-click="destroy()"
         ng-show="product.$id" class="btn btn-danger">Delete</button>

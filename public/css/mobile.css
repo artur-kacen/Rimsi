@@ -1,0 +1,266 @@
+
+@media screen and (max-width: 767px) {
+    .worktime {
+        padding: 10px 0 0 10px;
+        color: #000000;
+        font-family: "Century Gothic";
+        font-size: 12px;
+        line-height: 20px;
+        text-align: left;
+        text-shadow: 1px 0px 3px rgba(0, 0, 0, 0.53);
+    }
+    .worktime a {
+        color: #000000;
+        font-family: "Century Gothic";
+    }
+    .clock {
+        margin-left: -30px;
+    }
+    .logo {
+        padding: 0;
+    }
+    .clock {
+        margin-left: 0;
+        display: none;
+    }
+    .mobile {
+        display: inline;
+    }
+    .not-mobile {
+        display: none;
+    }
+    .language {
+        padding: 0;
+    }
+    .carousel-content {
+        display: none;
+    }
+
+    /* Left content (buttons) */
+    .left-content {
+        display: inline;
+        padding-left: 0px;
+    }
+
+    .left-menu-buttons {
+        padding-bottom: 15px;
+    }
+
+    .left-menu-button a {
+        cursor: pointer;
+        display: block;
+        height: 62px;
+        text-decoration: none;
+        color: #000000;
+        padding: 0px 0 10px 66px;
+        text-align: center;
+    }
+
+    .left-menu-button a span {
+        line-height: 30px;
+        font-size: 15px;
+        font-weight: bold;
+        font-family: "Century Gothic";
+        text-transform: uppercase;
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 1);
+    }
+
+    .left-menu-button a span.small {
+        line-height: 60px;
+    }
+
+    .left-menu-button > a:hover {
+        text-decoration: none;
+        color: #000000;
+    }
+
+    /* Right content (modules) */
+    .module {
+        display: block;
+        width: 100%;
+        position: relative
+    }
+
+    .module .news-top, .module .advices-top {
+        text-align: center;
+        margin-top: 5px;
+        width: 203px;
+        height: 48px;
+        background: url(../images/m-top.png) top no-repeat;
+        display: block;
+        position: relative;
+        float: left
+    }
+
+    .module .news-top h4 {
+        margin: 0;
+        text-transform: uppercase;
+        line-height: 50px;
+        color: rgb(120, 95, 73);
+        font-size: 13px;
+        font-family: "Century Gothic";
+        font-weight: 600;
+    }
+
+    .module .center {
+        padding: 0 12px 0 12px;
+        margin: 0;
+        width: 203px;
+        background: url(../images/m-center.png) repeat-y;
+        display: block;
+        position: relative;
+        float: left
+    }
+
+    .module .bottom {
+        margin: 0;
+        width: 203px;
+        height: 29px;
+        background: url(../images/m-bottom.png) top no-repeat;
+        display: block;
+        position: relative;
+        float: left
+    }
+
+    .module .advices-top H4 {
+        margin: 0;
+        text-transform: uppercase;
+        width: 150px;
+        line-height: 14px;
+        color: rgb(120, 95, 73);
+        font-size: 11px;
+        font-family: "Century Gothic";
+        font-weight: bold;
+        padding: 10px 0px 0 50px;
+    }
+
+    .module .center .view-all {
+        float: left;
+        text-align: center;
+        position: relative;
+        left: 35px;
+        display: block;
+        width: 112px;
+        height: 29px;
+        background: url(../images/viewall.png) top no-repeat;
+    }
+
+    .module .center .view-all a span {
+        text-align: center;
+        color: #689208;
+        font-size: 12px;
+        line-height: 26px;
+        padding-right: 4px;
+        text-decoration: underline
+    }
+
+    .module-item {
+        position: relative;
+        display: block;
+        width: 100%;
+        float: left;
+        margin-bottom: 10px;
+        padding: 0 5px 0 5px;
+    }
+
+    .module-item-title {
+        position: relative;
+        display: block;
+        float: left;
+        margin: 0;
+        text-align: left;
+        width: 100%;
+        line-height: 14px
+    }
+
+    .module-item-title a {
+        margin: 0;
+        font-size: 12px;
+        color: #72501a;
+        line-height: 14px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .module-item-date {
+        position: relative;
+        display: block;
+        float: left;
+        margin: 0 0 0 0;
+        padding: 0;
+        font-size: 12px;
+        color: #9b947f;
+        width: 100%;
+    }
+
+    .module-item-content-img {
+        position: relative;
+        display: inline-block;
+        float: left;
+        width: 90px;
+        height: 70px;
+    }
+    .module-item-content-img  img{
+        width: 90px;
+        height: 70px;
+    }
+    .module-item-content-text {
+        margin: 0 0 0 3px;
+        position: relative;
+        display: inline-block;
+        float: left;
+        width: 76px;
+        vertical-align: top
+    }
+    .module-item-content-text p {
+        line-height: 14px;
+        font-size: 12px;
+        margin: 0;
+    }
+
+    .module-item-content-readmore {
+        position: relative;
+        display: block;
+        float: right;
+        top: -3px;
+        right: 2px;
+    }
+    .readmore {
+        text-decoration: underline;
+        color: #60920e;
+        font-size: 12px;
+        color: #60920e !important;
+    }
+
+    .right-content {
+        padding: 0;
+    }
+
+    .footer {
+        display: none;
+    }
+
+    .content-top .content-module .content-module-footer a span {
+        text-transform: uppercase;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 14px;
+        line-height: 40px;
+    }
+
+    .content-top .content-module .content-module-footer {
+        background: url(../images/content_module_footer.png) center no-repeat;
+        height: 45px;
+        text-align: center;
+        margin-top: -10px;
+        background-size: contain;
+    }
+}
+@media screen and (max-width: 639px) {
+    .left-content {
+        display: none;
+    }
+    .center-content {
+        width: 100%;
+    }
+}

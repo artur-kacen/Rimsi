@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <h2>Галлерея</h2>
-            <div class="col-md-3" ng-repeat="photo in product.galleryPhotos">
+            <div class="col-md-3" ng-repeat="photo in product.galleryPhotos track by $index">
                 <a class="thumbnail">
                     <img ng-src="/images/gallery/{{photo.name}}" alt="{{photo.title}}" ng-click="set_current_photo(photo)">
                 </a>

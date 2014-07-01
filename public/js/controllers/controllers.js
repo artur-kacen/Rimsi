@@ -20,10 +20,34 @@ app.controller('MainCtrl', ['$scope', 'PagesFactory', '$translate', function($sc
         }
     }
 }]);
-
-app.controller('HomeCtrl', ['$scope', 'ProductsFactory', function($scope, ProductsFactory){
-    $scope.products = ProductsFactory.query();
+app.controller('ConstructorCtrl', ['$scope', '$translate', function($scope, $translate){
+    $scope.$watch(
+        function () {return $translate.uses();},
+        function (newValue) {
+            if (newValue === 'ru_RU') {
+                $scope.text = "В данный момент конструктор недоступен. Просим прощение за временные неудобства!";
+            } else {
+                $scope.text = "Pašlaik konstruktors nav pieejams. Mēs atvainojamies par sagādātajām neērtībām!";
+            }
+        }
+    )
 }]);
+
+app.controller('GalleryCtrl', ['$scope', 'MultiPageFactory', '$translate', '$location', function($scope, MultiPageFactory, $translate, $location){
+    $scope.i = 0;
+    $scope.products = MultiPageFactory.query({type: "products"});
+    $scope.$watch(
+        function () {return $translate.uses();},
+        function (newValue) {
+            if (newValue === 'ru_RU') {
+                $scope.i=0;
+            } else {
+                $scope.i=1;
+            }
+        }
+    )
+}]);
+
 
 function MultiPageHandler($scope, MultiPageFactory, $routeParams, $location, $translate, single) {
     $scope.i = 0;
@@ -84,6 +108,16 @@ app.controller('PageCtrl', ['$scope', 'PageFactory', '$translate', '$location', 
         function () {return $translate.uses();},
         function (newValue) {
             $scope.page = PageFactory.query({ref: $location.path().replace("/", ""), language: newValue});
+        }
+    )
+}]);
+
+app.controller('IndexCtrl', ['$scope', 'PageFactory', '$translate', '$location', function($scope, PageFactory, $translate, $location){
+    $scope.page = PageFactory.query({ref: "about_us", language: $translate.uses()});
+    $scope.$watch(
+        function () {return $translate.uses();},
+        function (newValue) {
+            $scope.page = PageFactory.query({ref: "about_us", language: newValue});
         }
     )
 }]);

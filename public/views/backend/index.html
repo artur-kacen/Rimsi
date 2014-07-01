@@ -1,10 +1,40 @@
-<div class="col-md-4">
-    <h3>Articles</h3>
-    {{products}}
-</div>
-<div class="col-md-4">
-    <h3>Products</h3>
-</div>
-<div class="col-md-4">
-    <h3>Materials</h3>
+<div style="margin-top: 50px">
+    <h2>Продукты:</h2>
+    <div class="row">
+        <div class="col-sm-6 col-md-4" ng-repeat="product in products">
+            <div class="thumbnail">
+                <a href="admin#!/{{product.type}}/edit/{{product._id}}" >
+                    <img ng-src="/images/gallery/{{product.content[0].mainPhoto.name}}" alt="{{product.content[0].mainPhoto.name}}" style="height: 200px; width: 100%;" alt="Редактировать" title="Редактировать">
+                </a>
+                <div class="caption">
+                    <h3>{{product.content[0].name}}</h3>
+                    <p>{{product.content[0].description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2>Материалы:</h2>
+    <div class="row">
+        <div class="col-sm-6 col-md-4" ng-repeat="material in materials">
+            <div class="thumbnail">
+                <a href="admin#!/{{material.type}}/edit/{{material._id}}" >
+                    <img ng-src="/images/gallery/{{material.content[0].mainPhoto.name}}" alt="{{material.content[0].mainPhoto.name}}" style="height: 200px; width: 100%;" alt="Редактировать" title="Редактировать">
+                </a>
+                <div class="caption">
+                    <h3>{{material.content[0].name}}</h3>
+                    <p>{{material.content[0].description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2>Новости:</h2>
+    <div class="media" ng-repeat="article in articles">
+        <a class="pull-left" href="admin#!/{{article.type}}/edit/{{article._id}}">
+            <img class="media-object" ng-src="/images/gallery/{{article.content[0].mainPhoto.name}}" style="width: 64px; height: 64px" alt="Редактировать" title="Редактировать">
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">{{article.content[0].name}}</h4>
+            {{article.content[0].description}}
+        </div>
+    </div>
 </div>
